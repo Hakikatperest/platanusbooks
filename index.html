@@ -94,6 +94,13 @@ header {
   color: var(--gold);
   font-size: 1rem;
   background: rgba(184,134,11,0.05);
+  flex-shrink: 0;
+}
+
+.logo-type {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
 .logo-name {
@@ -111,7 +118,7 @@ header {
   letter-spacing: 0.25em;
   color: var(--gold);
   text-transform: uppercase;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 .header-contact {
@@ -847,6 +854,13 @@ header {
   display: inline-block;
   margin: 1.2rem 0;
 }
+.cta-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
 .btn-wa {
   background: #25D366;
   color: white;
@@ -857,8 +871,13 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin-left: 1rem;
+  font-family: var(--f-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: 0.2s;
 }
+.btn-wa:hover { background: #128C7E; transform: translateY(-2px); }
 
 /* FOOTER */
 footer {
@@ -944,6 +963,7 @@ footer {
   box-shadow: 0 6px 18px rgba(184,134,11,0.4);
 }
 
+/* MOBILE FIXES */
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 120px 2rem 3rem; }
@@ -961,6 +981,46 @@ footer {
   .period-btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
   .time-block { min-width: 70px; padding: 0.6rem; }
   .time-number { font-size: 1.8rem; }
+  /* books list grid fix */
+  .book-items {
+    grid-template-columns: 1fr;
+  }
+  .books-list {
+    padding: 1rem;
+  }
+  .period-title h3 {
+    font-size: 1.2rem;
+  }
+  .cta-buttons-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-primary, .btn-wa {
+    width: auto;
+    min-width: 200px;
+    justify-content: center;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .logo-name {
+    font-size: 1rem;
+  }
+  .logo-sub {
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+  }
+  .logo-emblem {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+  .btn-header {
+    padding: 0.4rem 1rem;
+    font-size: 0.6rem;
+  }
 }
 </style>
 </head>
@@ -972,7 +1032,7 @@ footer {
       <div class="logo-emblem"><i class="fas fa-book-open"></i></div>
       <div class="logo-type">
         <span class="logo-name">PLATANUSS</span>
-        <span class="logo-sub">Books &amp; Publishing</span>
+        <span class="logo-sub">Books & Publishing</span>
       </div>
     </a>
     <div class="header-contact">
@@ -1031,26 +1091,20 @@ footer {
   </div>
 </section>
 
-<!-- SERVICES - PREMIUM VERSION WITH DETAILED FEATURES (düzeltilmiş ikon & görseller) -->
+<!-- SERVICES - PREMIUM VERSION WITH DETAILED FEATURES -->
 <section class="services">
   <div class="services-header"><div class="section-label">Uzmanlık Alanlarımız</div><h2 class="section-heading">Prestijli Yayıncılık<br><em>Hizmetleri</em></h2></div>
   <div class="services-grid">
-    <!-- Kart 1: Editörlük -->
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-pen-fancy"></i></div><div class="premium-tag">Uzman Kadro</div><h3 class="service-title">Editörlük & Redaksiyon</h3><p class="service-excerpt">Dilbilgisi, imla, anlatım bütünlüğü ve akademik standartlara uygunluk için titiz çalışma.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Dil ve anlatım uzmanı editörler</li><li><i class="fas fa-check-circle"></i> Kaynakça & atıf düzenleme (APA, Chicago)</li><li><i class="fas fa-check-circle"></i> Kapsamlı redaksiyon raporu</li></ul></div></div>
-    <!-- Kart 2: Dizgi & Mizanpaj (ikon düzeltildi + görsel) -->
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dizgi.webp" alt="Dizgi Mizanpaj" onerror="this.src='https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
-    <!-- Kart 3: Kapak Tasarımı (özel görsel) -->
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/kapak-tasarimi.webp" alt="Kapak Tasarımı" onerror="this.src='https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
-    <!-- Kart 4: Çeviri Hizmeti (özel görsel) -->
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/ceviri.webp" alt="Çeviri" onerror="this.src='https://images.pexels.com/photos/3728087/pexels-photo-3728087.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
-    <!-- Kart 5: Yayın Danışmanlığı -->
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dizgi Mizanpaj"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kapak Tasarımı"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/3728087/pexels-photo-3728087.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Çeviri"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-chart-line"></i></div><div class="premium-tag">360° Destek</div><h3 class="service-title">Yayın Danışmanlığı</h3><p class="service-excerpt">ISBN, bandrol, matbaa takibi, pazarlama stratejileri ve kitap fuarlarına katılım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Yasal süreçler ve telif hakları</li><li><i class="fas fa-check-circle"></i> Baskı takibi ve maliyet optimizasyonu</li><li><i class="fas fa-check-circle"></i> Tanıtım & basın bülteni desteği</li></ul></div></div>
-    <!-- Kart 6: Dağıtım Hizmeti (özel görsel) -->
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dagitim.webp" alt="Dağıtım" onerror="this.src='https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dağıtım"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
   </div>
 </section>
 
-<!-- YAYIN SÜRECİ - JOURNEY BÖLÜMÜ -->
+<!-- YAYIN SÜRECİ -->
 <section class="publishing-journey">
   <div class="journey-container">
     <div class="journey-header">
@@ -1068,7 +1122,7 @@ footer {
 </section>
 
 <!-- CTA -->
-<section class="cta-banner"><div class="cta-content"><h2 class="section-heading">Eseriniz<br><em>Okurlarla</em> Buluşsun</h2><p style="margin-bottom:1rem;">Dosyanızı gönderin, editör ekibimiz değerlendirsin.</p><a href="tel:05529266561" class="cta-phone">📞 0552 926 65 61</a><div><a href="tel:05529266561" class="btn-primary">Hemen Arayın</a><a href="https://wa.me/905529266561" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div></section>
+<section class="cta-banner"><div class="cta-content"><h2 class="section-heading">Eseriniz<br><em>Okurlarla</em> Buluşsun</h2><p style="margin-bottom:1rem;">Dosyanızı gönderin, editör ekibimiz değerlendirsin.</p><a href="tel:05529266561" class="cta-phone">📞 0552 926 65 61</a><div class="cta-buttons-group"><a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> Hemen Arayın</a><a href="https://wa.me/905529266561" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div></section>
 
 <!-- FOOTER -->
 <footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand-name">PLATANUSS <span>BOOKS</span></div><p style="margin-top:0.8rem; opacity:0.6;">Nitelikli yayıncılık anlayışıyla özgün eserler.</p></div><div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:05529266561">0552 926 65 61</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:platanusakademik@gmail.com">platanusakademik@gmail.com</a></div></div><div class="footer-col"><h4>Hizmetler</h4><ul class="footer-services-list"><li>Editörlük</li><li>Dizgi & Mizanpaj</li><li>Kapak Tasarımı</li><li>Çeviri</li><li>Yayın Danışmanlığı</li><li>Dağıtım</li></ul></div></div><div class="footer-bottom"><div class="footer-copy">© 2025 Platanuss Books — Tüm hakları saklıdır.</div></div></div></footer>
