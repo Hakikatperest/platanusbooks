@@ -412,7 +412,7 @@ header {
   color: var(--gold-dark);
 }
 
-/* ABOUT */
+/* ABOUT - Gelişmiş versiyon (entegre makale) */
 .about {
   padding: 7rem 0;
   background: var(--cream);
@@ -421,7 +421,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 6rem;
-  align-items: center;
+  align-items: start;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 3rem;
@@ -459,16 +459,43 @@ header {
   color: var(--gold);
 }
 .about-text {
-  font-size: 1.08rem;
-  line-height: 1.85;
+  font-size: 1.02rem;
+  line-height: 1.7;
   color: var(--ink-light);
   margin-bottom: 1.2rem;
+}
+.regulation-block {
+  background: #FEF5E8;
+  border-left: 4px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.regulation-block p {
+  margin-bottom: 0.75rem;
+}
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0;
+}
+.badge-list span {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 0.3rem 1rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold-dark);
 }
 .about-values {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 .value-item {
   display: flex;
@@ -493,7 +520,53 @@ header {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.value-text p { font-size: 0.85rem; color: var(--muted); }
+.value-text p { font-size: 0.8rem; color: var(--muted); }
+
+/* DOWNLOAD PREMIUM SECTION */
+.premium-downloads {
+  margin-top: 2rem;
+  background: linear-gradient(115deg, #FCF5EA 0%, #FFF9F0 100%);
+  border-radius: 28px;
+  padding: 1.8rem;
+  border: 1px solid rgba(184,134,11,0.3);
+}
+.premium-downloads h4 {
+  font-family: var(--f-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gold-dark);
+}
+.download-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.2rem 0 0.8rem;
+}
+.btn-pdf {
+  background: white;
+  border: 1px solid var(--gold);
+  padding: 0.6rem 1.4rem;
+  border-radius: 60px;
+  font-family: var(--f-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--gold-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-pdf:hover {
+  background: var(--gold);
+  color: white;
+  border-color: var(--gold);
+}
+.btn-pdf i { font-size: 0.8rem; }
 
 /* SERVICES - PREMIUM & DETAILED VERSION */
 .services {
@@ -519,7 +592,6 @@ header {
   transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   border: 1px solid rgba(184,134,11,0.2);
   position: relative;
-  backdrop-filter: blur(0px);
 }
 .service-card:hover {
   transform: translateY(-12px);
@@ -561,7 +633,6 @@ header {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0.25rem 0 0.8rem;
-  letter-spacing: -0.2px;
 }
 .service-excerpt {
   font-size: 0.9rem;
@@ -981,46 +1052,9 @@ footer {
   .period-btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
   .time-block { min-width: 70px; padding: 0.6rem; }
   .time-number { font-size: 1.8rem; }
-  /* books list grid fix */
-  .book-items {
-    grid-template-columns: 1fr;
-  }
-  .books-list {
-    padding: 1rem;
-  }
-  .period-title h3 {
-    font-size: 1.2rem;
-  }
-  .cta-buttons-group {
-    flex-direction: column;
-    align-items: center;
-  }
-  .btn-primary, .btn-wa {
-    width: auto;
-    min-width: 200px;
-    justify-content: center;
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-}
-@media (max-width: 480px) {
-  .logo-name {
-    font-size: 1rem;
-  }
-  .logo-sub {
-    font-size: 0.45rem;
-    letter-spacing: 0.2em;
-  }
-  .logo-emblem {
-    width: 36px;
-    height: 36px;
-    font-size: 0.85rem;
-  }
-  .btn-header {
-    padding: 0.4rem 1rem;
-    font-size: 0.6rem;
-  }
+  .book-items { grid-template-columns: 1fr; }
+  .books-list { padding: 1rem; }
+  .period-title h3 { font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -1069,11 +1103,48 @@ footer {
 <!-- MARQUEE -->
 <div class="marquee-strip"><div class="marquee-inner"><span class="marquee-item">Editörlük <span class="marquee-dot"></span></span><span class="marquee-item">Dizgi & Mizanpaj <span class="marquee-dot"></span></span><span class="marquee-item">Kapak Tasarımı <span class="marquee-dot"></span></span><span class="marquee-item">Çeviri <span class="marquee-dot"></span></span><span class="marquee-item">Yayın Danışmanlığı <span class="marquee-dot"></span></span><span class="marquee-item">Dağıtım <span class="marquee-dot"></span></span><span class="marquee-item">ISBN & Bandrol</span></div></div>
 
-<!-- ABOUT -->
+<!-- ABOUT with integrated article + PDF premium block -->
 <section class="about">
   <div class="about-grid">
     <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
-    <div class="about-content"><div class="section-label">Hakkımızda</div><h2 class="section-heading">Nitelikli Yayıncılığın<br><em>Adresi</em></h2><p class="about-text">Platanuss Books, Türk edebiyatı ve akademik dünyasında her eserle birlikte yeni bir okur-yazar köprüsü inşa ediyor. Editörlükten dağıtıma kadar her adımda uzman kadromuzla yanınızdayız.</p><div class="about-values"><div class="value-item"><div class="value-icon"><i class="fas fa-feather"></i></div><div class="value-text"><h5>Özgünlük</h5><p>Yazarın sesini koruyarak işliyoruz.</p></div></div><div class="value-item"><div class="value-icon"><i class="fas fa-gem"></i></div><div class="value-text"><h5>Kalite</h5><p>Uluslararası standartlarda üretim.</p></div></div><div class="value-item"><div class="value-icon"><i class="fas fa-handshake"></i></div><div class="value-text"><h5>Güven</h5><p>Şeffaf süreç, net sözleşme.</p></div></div><div class="value-item"><div class="value-icon"><i class="fas fa-globe"></i></div><div class="value-text"><h5>Erişim</h5><p>Türkiye geneli dağıtım ağı.</p></div></div></div></div>
+    <div class="about-content">
+      <div class="section-label">Hakkımızda</div>
+      <h2 class="section-heading">Platanus Publishing<em>®️</em><br>Uluslararası Prestij</h2>
+      <p class="about-text"><strong>Platanus Publishing®️</strong>, 2019 yılından beri uluslararası düzeyde düzenli faaliyet yürütmekte olup, tüm temel alanlarda Üniversiteler Arası Kurul ve Akademik Teşvik Yönetmeliği’ndeki <strong>“Tanınmış Uluslararası Yayınevi”</strong> tanımını karşılamaktadır.</p>
+      <div class="regulation-block">
+        <p><i class="fas fa-gavel" style="color: var(--gold); margin-right: 0.5rem;"></i> <strong>Yükseköğretim Genel Kurulu Kararı (17/10/2019):</strong></p>
+        <p><strong>Ulusal Yayınevi:</strong> En az dört yıl ulusal düzeyde düzenli faaliyet yürüten, yayınları Türkiye’deki üniversite kütüphanelerinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
+        <p><strong>Uluslararası Yayınevi:</strong> En az dört yıl uluslararası düzeyde düzenli faaliyet yürüten, yayımladığı kitaplar YÖK’ün tanıdığı ilk 500 üniversite kütüphanesinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
+        <p>Platanus Publishing®️, Akademik Teşvik Yönetmeliği (27 Haziran 2018) gereği tüm temel alanlarda tanınmış uluslararası yayınevi niteliğine haizdir.</p>
+      </div>
+      <div class="badge-list">
+        <span>✅ En az 5 yıl düzenli faaliyet</span>
+        <span>📚 Dünya ilk 500 üniv. katalog</span>
+        <span>🇹🇷 Türkiye üniv. kütüphane katalog</span>
+        <span>🌍 Farklı dillerde yayınlar</span>
+      </div>
+      <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için aşağıdaki dosyaları inceleyebilirsiniz.</p>
+      
+      <!-- PREMIUM PDF DOWNLOAD SECTION -->
+      <div class="premium-downloads">
+        <h4><i class="fas fa-file-pdf"></i> Akademik Belgeler & Özel Yayınlar</h4>
+        <div class="download-buttons-grid">
+          <a href="https://www.platanusbooks.com/dosyalar/taninmis.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i> Tanınmış Yayınevi Belgesi</a>
+          <a href="https://www.platanusbooks.com/dosyalar/kriz.pdf" class="btn-pdf" target="_blank"><i class="fas fa-book-open"></i> Krizden Dayanıklılığa</a>
+          <a href="https://www.platanusbooks.com/dosyalar/modern.pdf" class="btn-pdf" target="_blank"><i class="fas fa-brain"></i> Modern Ruh Sağlığı</a>
+          <a href="https://www.platanusbooks.com/dosyalar/toplumsal.pdf" class="btn-pdf" target="_blank"><i class="fas fa-hand-holding-heart"></i> Toplumsal Kırılganlık</a>
+          <a href="https://www.platanusbooks.com/dosyalar/e-kitap.pdf" class="btn-pdf" target="_blank"><i class="fas fa-music"></i> Türk Obua Tarihi - Zerrin Tan</a>
+        </div>
+        <p style="font-size:0.7rem; margin-top:0.8rem; color:var(--muted);"><i class="fas fa-check-circle"></i> Uluslararası indeksler, ilk 500 üniversite katalog kanıtları ve detaylı ekler için PDF dosyalarına tıklayın.</p>
+      </div>
+
+      <div class="about-values">
+        <div class="value-item"><div class="value-icon"><i class="fas fa-feather"></i></div><div class="value-text"><h5>Özgünlük</h5><p>Yazarın sesini koruyarak işliyoruz.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-gem"></i></div><div class="value-text"><h5>Kalite</h5><p>Uluslararası standartlarda üretim.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-handshake"></i></div><div class="value-text"><h5>Güven</h5><p>Şeffaf süreç, net sözleşme.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-globe"></i></div><div class="value-text"><h5>Erişim</h5><p>Türkiye geneli dağıtım ağı.</p></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1091,33 +1162,24 @@ footer {
   </div>
 </section>
 
-<!-- SERVICES - PREMIUM VERSION WITH DETAILED FEATURES -->
+<!-- SERVICES (premium) -->
 <section class="services">
   <div class="services-header"><div class="section-label">Uzmanlık Alanlarımız</div><h2 class="section-heading">Prestijli Yayıncılık<br><em>Hizmetleri</em></h2></div>
   <div class="services-grid">
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-pen-fancy"></i></div><div class="premium-tag">Uzman Kadro</div><h3 class="service-title">Editörlük & Redaksiyon</h3><p class="service-excerpt">Dilbilgisi, imla, anlatım bütünlüğü ve akademik standartlara uygunluk için titiz çalışma.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Dil ve anlatım uzmanı editörler</li><li><i class="fas fa-check-circle"></i> Kaynakça & atıf düzenleme (APA, Chicago)</li><li><i class="fas fa-check-circle"></i> Kapsamlı redaksiyon raporu</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dizgi.webp" alt="Dizgi Mizanpaj"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/kapak-tasarimi.webp" alt="Kapak Tasarımı"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/ceviri.webp" alt="Çeviri"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/2082918/pexels-photo-2082918.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dizgi"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/5691695/pexels-photo-5691695.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kapak"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Çeviri"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-chart-line"></i></div><div class="premium-tag">360° Destek</div><h3 class="service-title">Yayın Danışmanlığı</h3><p class="service-excerpt">ISBN, bandrol, matbaa takibi, pazarlama stratejileri ve kitap fuarlarına katılım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Yasal süreçler ve telif hakları</li><li><i class="fas fa-check-circle"></i> Baskı takibi ve maliyet optimizasyonu</li><li><i class="fas fa-check-circle"></i> Tanıtım & basın bülteni desteği</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dagitim.webp" alt="Dağıtım"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
+    <div class="service-card"><img class="service-img" src="https://images.pexels.com/photos/2788870/pexels-photo-2788870.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dağıtım"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
   </div>
 </section>
 
 <!-- YAYIN SÜRECİ -->
 <section class="publishing-journey">
   <div class="journey-container">
-    <div class="journey-header">
-      <div class="section-label" style="justify-content: center;">Süreç</div>
-      <h2 class="section-heading">Yayın <em>Yolculuğunuz</em></h2>
-      <p class="journey-sub">Elyazmanızdan okuyucunun eline geçene kadar her adımı titizlikle yönetiyoruz. Şeffaf süreç, belirli zaman çizelgesi, kesintisiz iletişim.</p>
-    </div>
-    <div class="process-steps">
-      <div class="step-card"><div class="step-number">I</div><h3 class="step-title">Başvuru & Değerlendirme</h3><p class="step-desc">Elyazmanız editör ekibimiz tarafından incelenir ve size geri bildirim verilir.</p></div>
-      <div class="step-card"><div class="step-number">II</div><h3 class="step-title">Sözleşme & Planlama</h3><p class="step-desc">Anlaşma koşulları netleştirilir, yayın takvimi oluşturulur.</p></div>
-      <div class="step-card"><div class="step-number">III</div><h3 class="step-title">Üretim Süreci</h3><p class="step-desc">Editörlük, dizgi, kapak tasarımı ve baskı aşamaları profesyonelce yürütülür.</p></div>
-      <div class="step-card"><div class="step-number">IV</div><h3 class="step-title">Dağıtım & Satış</h3><p class="step-desc">Eseriniz Türkiye geneli ve online kanallar aracılığıyla okuyucuyla buluşur.</p></div>
-    </div>
+    <div class="journey-header"><div class="section-label" style="justify-content: center;">Süreç</div><h2 class="section-heading">Yayın <em>Yolculuğunuz</em></h2><p class="journey-sub">Elyazmanızdan okuyucunun eline geçene kadar her adımı titizlikle yönetiyoruz.</p></div>
+    <div class="process-steps"><div class="step-card"><div class="step-number">I</div><h3 class="step-title">Başvuru & Değerlendirme</h3><p class="step-desc">Elyazmanız editör ekibimiz tarafından incelenir ve size geri bildirim verilir.</p></div><div class="step-card"><div class="step-number">II</div><h3 class="step-title">Sözleşme & Planlama</h3><p class="step-desc">Anlaşma koşulları netleştirilir, yayın takvimi oluşturulur.</p></div><div class="step-card"><div class="step-number">III</div><h3 class="step-title">Üretim Süreci</h3><p class="step-desc">Editörlük, dizgi, kapak tasarımı ve baskı aşamaları profesyonelce yürütülür.</p></div><div class="step-card"><div class="step-number">IV</div><h3 class="step-title">Dağıtım & Satış</h3><p class="step-desc">Eseriniz Türkiye geneli ve online kanallar aracılığıyla okuyucuyla buluşur.</p></div></div>
   </div>
 </section>
 
@@ -1128,7 +1190,6 @@ footer {
 <footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand-name">PLATANUSS <span>BOOKS</span></div><p style="margin-top:0.8rem; opacity:0.6;">Nitelikli yayıncılık anlayışıyla özgün eserler.</p></div><div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:05529266561">0552 926 65 61</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:platanusakademik@gmail.com">platanusakademik@gmail.com</a></div></div><div class="footer-col"><h4>Hizmetler</h4><ul class="footer-services-list"><li>Editörlük</li><li>Dizgi & Mizanpaj</li><li>Kapak Tasarımı</li><li>Çeviri</li><li>Yayın Danışmanlığı</li><li>Dağıtım</li></ul></div></div><div class="footer-bottom"><div class="footer-copy">© 2025 Platanuss Books — Tüm hakları saklıdır.</div></div></div></footer>
 
 <script>
-// Kitap verileri
 const booksData = {
   "2026Mart": {
     turkce: ["Ziraat, Orman ve Su Ürünleri Alanında Güncel Metodolojik Yaklaşımlar","Mühendislik Alanında Güncel Metodolojik Yaklaşımlar","Eğitim Bilimleri Alanında Güncel Metodolojik Yaklaşımlar","Güzel Sanatlar Alanında Güncel Metodolojik Yaklaşımlar","Spor Bilimleri Alanında Güncel Metodolojik Yaklaşımlar","Acil Tıp Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Fizik Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Periodontoloji Alanında Güncel Metodolojik Yaklaşımlar","Kardiyoloji Alanında Güncel Metodolojik Yaklaşımlar","Ağız, Diş ve Çene Cerrahisi Alanında Güncel Metodolojik Yaklaşımlar","Makine Mühendisliği Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Çocuk Sağlığı ve Hastalıkları Araştırmalarında Güncel Metodolojik Yaklaşımlar","İlahiyat Alanında Güncel Metodolojik Yaklaşımlar","Plastik Sanatlar Alanında Güncel Metodolojik Yaklaşımlar","Fen Bilimleri ve Matematik Alanında Güncel Metodolojik Yaklaşımlar","Muhasebe Alanında Güncel Metodolojik Yaklaşımlar","Mimarlık Alanında Güncel Metodolojik Yaklaşımlar","Endodonti Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Üroloji Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Ortopedi ve Travmatoloji Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Sanat Tarihi Alanında Güncel Metodolojik Yaklaşımlar","Tekstil ve Moda Tasarımı Araştırmalarında Güncel Metodolojik Yaklaşımlar","Biyofizik Alanında Güncel Metodolojik Yaklaşımlar","Temel Eğitim Alanında Güncel Metodolojik Yaklaşımlar","Yönetim ve Organizasyon Alanında Güncel Metodolojik Yaklaşımlar","Sosyal Bilimler Temel Alanında Güncel Metodolojik Yaklaşımlar","Mimarlık, Planlama ve Tasarım Alanında Güncel Metodolojik Yaklaşımlar","Anesteziyoloji ve Reanimasyon Alanında Güncel Metodolojik Yaklaşımlar","Sağlık Bilimleri Araştırmalarında Güncel Metodolojik Yaklaşımlar","Protetik Diş Tedavisi Araştırmalarında Güncel Metodolojik Yaklaşımlar"],
@@ -1139,10 +1200,8 @@ const booksData = {
     ingilizce: []
   }
 };
-
 const TARGET_DATE = new Date(2026, 4, 14, 0, 0, 0).getTime();
 let countdownInterval = null;
-
 function startCountdown() {
   if (countdownInterval) clearInterval(countdownInterval);
   countdownInterval = setInterval(() => {
@@ -1151,11 +1210,7 @@ function startCountdown() {
     const daysElem = document.getElementById('days');
     if (!daysElem) return;
     if (distance < 0) {
-      document.getElementById('days').innerText = '00';
-      document.getElementById('hours').innerText = '00';
-      document.getElementById('minutes').innerText = '00';
-      document.getElementById('seconds').innerText = '00';
-      return;
+      document.getElementById('days').innerText = '00'; document.getElementById('hours').innerText = '00'; document.getElementById('minutes').innerText = '00'; document.getElementById('seconds').innerText = '00'; return;
     }
     document.getElementById('days').innerText = Math.floor(distance / (1000*60*60*24)).toString().padStart(2,'0');
     document.getElementById('hours').innerText = Math.floor((distance % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2,'0');
@@ -1163,43 +1218,21 @@ function startCountdown() {
     document.getElementById('seconds').innerText = Math.floor((distance % (1000*60)) / 1000).toString().padStart(2,'0');
   }, 1000);
 }
-
 function renderBooks(periodKey) {
   const names = { "2026Mart":"2026 MART DÖNEMİ", "2026Haziran":"2026 HAZİRAN DÖNEMİ", "2025Aralik":"2025 ARALIK DÖNEMİ" };
   let titleHtml = `<div class="period-title"><h3>${names[periodKey].split(' ')[0]} <span>${names[periodKey].split(' ').slice(1).join(' ')}</span></h3><p>Yayımlanan kitaplar · Akademik Araştırma ve Derlemeler Serisi</p></div>`;
-  
   if (periodKey === "2026Haziran") {
     let html = titleHtml + `<div class="books-list"><div class="countdown-wrapper"><div class="countdown-title"><i class="fas fa-hourglass-half"></i> 2026 Haziran Dönemi Eser Gönderimi İçin Kalan Süre</div><div class="countdown-timer"><div class="time-block"><div class="time-number" id="days">00</div><div class="time-label">Gün</div></div><div class="time-block"><div class="time-number" id="hours">00</div><div class="time-label">Saat</div></div><div class="time-block"><div class="time-number" id="minutes">00</div><div class="time-label">Dakika</div></div><div class="time-block"><div class="time-number" id="seconds">00</div><div class="time-label">Saniye</div></div></div></div><div class="empty-message"><i class="fas fa-feather-alt"></i><p>Bu döneme ait kitap listesi, eser gönderim süreci tamamlandıktan sonra yayınlanacaktır.</p></div></div>`;
-    document.getElementById('booksContent').innerHTML = html;
-    startCountdown();
-    return;
+    document.getElementById('booksContent').innerHTML = html; startCountdown(); return;
   }
-  
   const data = booksData[periodKey];
   let booksHtml = '<div class="books-list">';
-  if (data.turkce && data.turkce.length) {
-    booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-language"></i> TÜRKÇE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`;
-    data.turkce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`);
-    booksHtml += `</div></div>`;
-  }
-  if (data.ingilizce && data.ingilizce.length) {
-    booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-globe"></i> İNGİLİZCE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`;
-    data.ingilizce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`);
-    booksHtml += `</div></div>`;
-  }
-  booksHtml += '</div>';
-  document.getElementById('booksContent').innerHTML = titleHtml + booksHtml;
+  if (data.turkce && data.turkce.length) { booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-language"></i> TÜRKÇE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`; data.turkce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`); booksHtml += `</div></div>`; }
+  if (data.ingilizce && data.ingilizce.length) { booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-globe"></i> İNGİLİZCE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`; data.ingilizce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`); booksHtml += `</div></div>`; }
+  booksHtml += '</div>'; document.getElementById('booksContent').innerHTML = titleHtml + booksHtml;
   if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
 }
-
-document.querySelectorAll('.period-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderBooks(btn.getAttribute('data-period'));
-  });
-});
-
+document.querySelectorAll('.period-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderBooks(btn.getAttribute('data-period')); }); });
 renderBooks("2026Haziran");
 </script>
 </body>
