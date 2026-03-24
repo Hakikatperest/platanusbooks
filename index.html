@@ -735,6 +735,98 @@ header {
 }
 .empty-message { text-align: center; padding: 3rem; color: var(--muted); }
 
+/* YAYIN SÜRECİ (JOURNEY) */
+.publishing-journey {
+  padding: 7rem 0;
+  background: #FFFCF8;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.journey-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.journey-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 4rem auto;
+}
+.journey-sub {
+  font-family: var(--f-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 1rem;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+  z-index: 1;
+}
+.step-card {
+  background: white;
+  border-radius: 32px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 12px 28px -12px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  border: 1px solid rgba(184,134,11,0.15);
+}
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-light);
+  box-shadow: 0 25px 35px -16px rgba(184,134,11,0.2);
+}
+.step-number {
+  width: 56px;
+  height: 56px;
+  background: var(--gold);
+  color: white;
+  font-family: var(--f-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 6px 14px rgba(184,134,11,0.3);
+}
+.step-title {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+@media (max-width: 1024px) {
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .process-steps::before { display: none; }
+}
+@media (max-width: 640px) {
+  .process-steps { grid-template-columns: 1fr; }
+}
+
 /* CTA */
 .cta-banner {
   background: linear-gradient(125deg, #F6EFE4 0%, #FEF7EF 100%);
@@ -939,22 +1031,39 @@ footer {
   </div>
 </section>
 
-<!-- SERVICES - PREMIUM VERSION WITH DETAILED FEATURES -->
+<!-- SERVICES - PREMIUM VERSION WITH DETAILED FEATURES (düzeltilmiş ikon & görseller) -->
 <section class="services">
   <div class="services-header"><div class="section-label">Uzmanlık Alanlarımız</div><h2 class="section-heading">Prestijli Yayıncılık<br><em>Hizmetleri</em></h2></div>
   <div class="services-grid">
     <!-- Kart 1: Editörlük -->
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-pen-fancy"></i></div><div class="premium-tag">Uzman Kadro</div><h3 class="service-title">Editörlük & Redaksiyon</h3><p class="service-excerpt">Dilbilgisi, imla, anlatım bütünlüğü ve akademik standartlara uygunluk için titiz çalışma.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Dil ve anlatım uzmanı editörler</li><li><i class="fas fa-check-circle"></i> Kaynakça & atıf düzenleme (APA, Chicago)</li><li><i class="fas fa-check-circle"></i> Kapsamlı redaksiyon raporu</li></ul></div></div>
-    <!-- Kart 2: Dizgi & Mizanpaj -->
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-layout"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
-    <!-- Kart 3: Kapak Tasarımı -->
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
-    <!-- Kart 4: Çeviri Hizmeti -->
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/3728087/pexels-photo-3728087.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
+    <!-- Kart 2: Dizgi & Mizanpaj (ikon düzeltildi + görsel) -->
+    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dizgi.webp" alt="Dizgi Mizanpaj" onerror="this.src='https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
+    <!-- Kart 3: Kapak Tasarımı (özel görsel) -->
+    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/kapak-tasarimi.webp" alt="Kapak Tasarımı" onerror="this.src='https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
+    <!-- Kart 4: Çeviri Hizmeti (özel görsel) -->
+    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/ceviri.webp" alt="Çeviri" onerror="this.src='https://images.pexels.com/photos/3728087/pexels-photo-3728087.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
     <!-- Kart 5: Yayın Danışmanlığı -->
     <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-chart-line"></i></div><div class="premium-tag">360° Destek</div><h3 class="service-title">Yayın Danışmanlığı</h3><p class="service-excerpt">ISBN, bandrol, matbaa takibi, pazarlama stratejileri ve kitap fuarlarına katılım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Yasal süreçler ve telif hakları</li><li><i class="fas fa-check-circle"></i> Baskı takibi ve maliyet optimizasyonu</li><li><i class="fas fa-check-circle"></i> Tanıtım & basın bülteni desteği</li></ul></div></div>
-    <!-- Kart 6: Dağıtım Hizmeti -->
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
+    <!-- Kart 6: Dağıtım Hizmeti (özel görsel) -->
+    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dagitim.webp" alt="Dağıtım" onerror="this.src='https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=800'"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
+  </div>
+</section>
+
+<!-- YAYIN SÜRECİ - JOURNEY BÖLÜMÜ -->
+<section class="publishing-journey">
+  <div class="journey-container">
+    <div class="journey-header">
+      <div class="section-label" style="justify-content: center;">Süreç</div>
+      <h2 class="section-heading">Yayın <em>Yolculuğunuz</em></h2>
+      <p class="journey-sub">Elyazmanızdan okuyucunun eline geçene kadar her adımı titizlikle yönetiyoruz. Şeffaf süreç, belirli zaman çizelgesi, kesintisiz iletişim.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step-card"><div class="step-number">I</div><h3 class="step-title">Başvuru & Değerlendirme</h3><p class="step-desc">Elyazmanız editör ekibimiz tarafından incelenir ve size geri bildirim verilir.</p></div>
+      <div class="step-card"><div class="step-number">II</div><h3 class="step-title">Sözleşme & Planlama</h3><p class="step-desc">Anlaşma koşulları netleştirilir, yayın takvimi oluşturulur.</p></div>
+      <div class="step-card"><div class="step-number">III</div><h3 class="step-title">Üretim Süreci</h3><p class="step-desc">Editörlük, dizgi, kapak tasarımı ve baskı aşamaları profesyonelce yürütülür.</p></div>
+      <div class="step-card"><div class="step-number">IV</div><h3 class="step-title">Dağıtım & Satış</h3><p class="step-desc">Eseriniz Türkiye geneli ve online kanallar aracılığıyla okuyucuyla buluşur.</p></div>
+    </div>
   </div>
 </section>
 
@@ -965,7 +1074,7 @@ footer {
 <footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand-name">PLATANUSS <span>BOOKS</span></div><p style="margin-top:0.8rem; opacity:0.6;">Nitelikli yayıncılık anlayışıyla özgün eserler.</p></div><div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:05529266561">0552 926 65 61</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:platanusakademik@gmail.com">platanusakademik@gmail.com</a></div></div><div class="footer-col"><h4>Hizmetler</h4><ul class="footer-services-list"><li>Editörlük</li><li>Dizgi & Mizanpaj</li><li>Kapak Tasarımı</li><li>Çeviri</li><li>Yayın Danışmanlığı</li><li>Dağıtım</li></ul></div></div><div class="footer-bottom"><div class="footer-copy">© 2025 Platanuss Books — Tüm hakları saklıdır.</div></div></div></footer>
 
 <script>
-// Kitap verileri (mevcut yapı korundu)
+// Kitap verileri
 const booksData = {
   "2026Mart": {
     turkce: ["Ziraat, Orman ve Su Ürünleri Alanında Güncel Metodolojik Yaklaşımlar","Mühendislik Alanında Güncel Metodolojik Yaklaşımlar","Eğitim Bilimleri Alanında Güncel Metodolojik Yaklaşımlar","Güzel Sanatlar Alanında Güncel Metodolojik Yaklaşımlar","Spor Bilimleri Alanında Güncel Metodolojik Yaklaşımlar","Acil Tıp Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Fizik Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Periodontoloji Alanında Güncel Metodolojik Yaklaşımlar","Kardiyoloji Alanında Güncel Metodolojik Yaklaşımlar","Ağız, Diş ve Çene Cerrahisi Alanında Güncel Metodolojik Yaklaşımlar","Makine Mühendisliği Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Çocuk Sağlığı ve Hastalıkları Araştırmalarında Güncel Metodolojik Yaklaşımlar","İlahiyat Alanında Güncel Metodolojik Yaklaşımlar","Plastik Sanatlar Alanında Güncel Metodolojik Yaklaşımlar","Fen Bilimleri ve Matematik Alanında Güncel Metodolojik Yaklaşımlar","Muhasebe Alanında Güncel Metodolojik Yaklaşımlar","Mimarlık Alanında Güncel Metodolojik Yaklaşımlar","Endodonti Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Üroloji Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Ortopedi ve Travmatoloji Alanındaki Araştırmalarda Güncel Metodolojik Yaklaşımlar","Sanat Tarihi Alanında Güncel Metodolojik Yaklaşımlar","Tekstil ve Moda Tasarımı Araştırmalarında Güncel Metodolojik Yaklaşımlar","Biyofizik Alanında Güncel Metodolojik Yaklaşımlar","Temel Eğitim Alanında Güncel Metodolojik Yaklaşımlar","Yönetim ve Organizasyon Alanında Güncel Metodolojik Yaklaşımlar","Sosyal Bilimler Temel Alanında Güncel Metodolojik Yaklaşımlar","Mimarlık, Planlama ve Tasarım Alanında Güncel Metodolojik Yaklaşımlar","Anesteziyoloji ve Reanimasyon Alanında Güncel Metodolojik Yaklaşımlar","Sağlık Bilimleri Araştırmalarında Güncel Metodolojik Yaklaşımlar","Protetik Diş Tedavisi Araştırmalarında Güncel Metodolojik Yaklaşımlar"],
