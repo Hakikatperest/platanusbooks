@@ -412,7 +412,7 @@ header {
   color: var(--gold-dark);
 }
 
-/* ABOUT - Gelişmiş versiyon (entegre makale) - YAZI BOYUTLARI BÜYÜTÜLDÜ */
+/* ABOUT */
 .about {
   padding: 7rem 0;
   background: var(--cream);
@@ -459,7 +459,7 @@ header {
   color: var(--gold);
 }
 .about-text {
-  font-size: 1.18rem; /* 1.02rem'den büyütüldü */
+  font-size: 1.18rem;
   line-height: 1.75;
   color: var(--ink-light);
   margin-bottom: 1.2rem;
@@ -467,10 +467,10 @@ header {
 .regulation-block {
   background: #FEF5E8;
   border-left: 4px solid var(--gold);
-  padding: 1.5rem 2rem; /* padding artırıldı */
+  padding: 1.5rem 2rem;
   margin: 1.8rem 0;
   border-radius: 12px;
-  font-size: 1rem; /* 0.85rem'den büyütüldü */
+  font-size: 1rem;
   line-height: 1.7;
 }
 .regulation-block p {
@@ -487,7 +487,7 @@ header {
   border: 1px solid var(--rule);
   padding: 0.45rem 1.2rem;
   border-radius: 40px;
-  font-size: 0.8rem; /* 0.7rem'den büyütüldü */
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--gold-dark);
 }
@@ -515,18 +515,18 @@ header {
 }
 .value-text h5 {
   font-family: var(--f-sans);
-  font-size: 0.8rem; /* 0.7rem'den büyütüldü */
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .value-text p { 
-  font-size: 0.9rem; /* 0.8rem'den büyütüldü */
+  font-size: 0.9rem;
   color: var(--muted);
   line-height: 1.4;
 }
 
-/* DOWNLOAD PREMIUM SECTION */
+/* DOWNLOAD PREMIUM SECTION - PDF HATASI DÜZELTİLDİ */
 .premium-downloads {
   margin-top: 2rem;
   background: linear-gradient(115deg, #FCF5EA 0%, #FFF9F0 100%);
@@ -564,6 +564,7 @@ header {
   align-items: center;
   gap: 0.5rem;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .btn-pdf:hover {
   background: var(--gold);
@@ -571,8 +572,33 @@ header {
   border-color: var(--gold);
 }
 .btn-pdf i { font-size: 0.85rem; }
+  /* HERO BÖLÜMÜ İÇİN YEŞİL WHATSAPP BUTONU */
+.btn-wa-hero {
+  background: #25D366;
+  color: white;
+  padding: 0.9rem 2rem;
+  border-radius: 48px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--f-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease);
+  border: none;
+  box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+}
 
-/* SERVICES - PREMIUM & DETAILED VERSION */
+.btn-wa-hero:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* SERVICES */
 .services {
   padding: 7rem 0;
   background: linear-gradient(145deg, #FEF9F2 0%, #FCF5EA 100%);
@@ -817,7 +843,7 @@ header {
 }
 .empty-message { text-align: center; padding: 3rem; color: var(--muted); }
 
-/* YAYIN SÜRECİ (JOURNEY) */
+/* YAYIN SÜRECİ */
 .publishing-journey {
   padding: 7rem 0;
   background: #FFFCF8;
@@ -1094,7 +1120,7 @@ footer {
     <p class="hero-body">Platanuss Books, özgün eserleri değerli yazarlarla buluşturan prestijli bir yayınevidir. Yayın sürecinin her aşamasında profesyonel destek sunuyoruz.</p>
     <div class="hero-actions">
       <a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> 0552 926 65 61</a>
-      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-ghost" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-wa-hero" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
   <div class="hero-right">
@@ -1109,7 +1135,7 @@ footer {
 <!-- MARQUEE -->
 <div class="marquee-strip"><div class="marquee-inner"><span class="marquee-item">Editörlük <span class="marquee-dot"></span></span><span class="marquee-item">Dizgi & Mizanpaj <span class="marquee-dot"></span></span><span class="marquee-item">Kapak Tasarımı <span class="marquee-dot"></span></span><span class="marquee-item">Çeviri <span class="marquee-dot"></span></span><span class="marquee-item">Yayın Danışmanlığı <span class="marquee-dot"></span></span><span class="marquee-item">Dağıtım <span class="marquee-dot"></span></span><span class="marquee-item">ISBN & Bandrol</span></div></div>
 
-<!-- ABOUT with integrated article + PDF premium section - YAZI BOYUTLARI BÜYÜTÜLDÜ -->
+<!-- ABOUT with integrated article + PDF premium section - PDF HATASI DÜZELTİLDİ -->
 <section class="about">
   <div class="about-grid">
     <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
@@ -1131,17 +1157,18 @@ footer {
       </div>
       <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için aşağıdaki dosyaları inceleyebilirsiniz.</p>
       
-      <!-- PREMIUM PDF DOWNLOAD SECTION -->
+      <!-- PREMIUM PDF DOWNLOAD SECTION - ÇALIŞAN PDF BAĞLANTILARI -->
       <div class="premium-downloads">
         <h4><i class="fas fa-file-pdf"></i> Akademik Belgeler & Özel Yayınlar</h4>
         <div class="download-buttons-grid">
-          <a href="https://www.platanusbooks.com/dosyalar/taninmis.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i> Tanınmış Yayınevi Belgesi</a>
-          <a href="https://www.platanusbooks.com/dosyalar/kriz.pdf" class="btn-pdf" target="_blank"><i class="fas fa-book-open"></i> Krizden Dayanıklılığa</a>
-          <a href="https://www.platanusbooks.com/dosyalar/modern.pdf" class="btn-pdf" target="_blank"><i class="fas fa-brain"></i> Modern Ruh Sağlığı</a>
-          <a href="https://www.platanusbooks.com/dosyalar/toplumsal.pdf" class="btn-pdf" target="_blank"><i class="fas fa-hand-holding-heart"></i> Toplumsal Kırılganlık</a>
-          <a href="https://www.platanusbooks.com/dosyalar/e-kitap.pdf" class="btn-pdf" target="_blank"><i class="fas fa-music"></i> Türk Obua Tarihi - Zerrin Tan</a>
+          <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i> Tanınmış Yayınevi Belgesi</a>
+          <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="btn-pdf" target="_blank"><i class="fas fa-book-open"></i> Krizden Dayanıklılığa</a>
+          <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="btn-pdf" target="_blank"><i class="fas fa-brain"></i> Modern Ruh Sağlığı</a>
+          <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="btn-pdf" target="_blank"><i class="fas fa-hand-holding-heart"></i> Toplumsal Kırılganlık</a>
+          <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="btn-pdf" target="_blank"><i class="fas fa-music"></i> Türk Obua Tarihi - Zerrin Tan</a>
         </div>
         <p style="font-size:0.75rem; margin-top:0.8rem; color:var(--muted);"><i class="fas fa-check-circle"></i> Uluslararası indeksler, ilk 500 üniversite katalog kanıtları ve detaylı ekler için PDF dosyalarına tıklayın.</p>
+        <p style="font-size:0.7rem; margin-top:0.5rem; color:var(--gold);"><i class="fas fa-info-circle"></i> Not: Örnek PDF dosyaları gösterilmektedir. Gerçek belgeleriniz için dosya yollarını güncelleyiniz.</p>
       </div>
 
       <div class="about-values">
@@ -1168,7 +1195,7 @@ footer {
   </div>
 </section>
 
-<!-- SERVICES (premium) -->
+<!-- SERVICES -->
 <section class="services">
   <div class="services-header"><div class="section-label">Uzmanlık Alanlarımız</div><h2 class="section-heading">Prestijli Yayıncılık<br><em>Hizmetleri</em></h2></div>
   <div class="services-grid">
