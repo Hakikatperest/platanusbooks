@@ -526,7 +526,7 @@ header {
   line-height: 1.4;
 }
 
-/* DOWNLOAD PREMIUM SECTION - PDF HATASI DÜZELTİLDİ */
+/* DOWNLOAD PREMIUM SECTION - 3'lü grid hizalama */
 .premium-downloads {
   margin-top: 2rem;
   background: linear-gradient(115deg, #FCF5EA 0%, #FFF9F0 100%);
@@ -544,34 +544,55 @@ header {
   gap: 0.6rem;
   color: var(--gold-dark);
 }
+/* Masaüstünde 3'lü hizalı grid */
 .download-buttons-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
   margin: 1.2rem 0 0.8rem;
 }
 .btn-pdf {
   background: white;
   border: 1px solid var(--gold);
-  padding: 0.7rem 1.5rem;
+  padding: 0.75rem 1.1rem;
   border-radius: 60px;
   font-family: var(--f-sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-decoration: none;
   color: var(--gold-dark);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: flex-start;
+  gap: 0.55rem;
   transition: all 0.2s;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.btn-pdf span.btn-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 .btn-pdf:hover {
   background: var(--gold);
   color: white;
   border-color: var(--gold);
 }
-.btn-pdf i { font-size: 0.85rem; }
+.btn-pdf i { font-size: 0.85rem; flex-shrink: 0; }
+
+/* Tablette 2'li, mobilde tek sütun */
+@media (max-width: 1024px) {
+  .download-buttons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .download-buttons-grid { grid-template-columns: 1fr; }
+}
+
   /* HERO BÖLÜMÜ İÇİN YEŞİL WHATSAPP BUTONU */
 .btn-wa-hero {
   background: #25D366;
@@ -1135,7 +1156,7 @@ footer {
 <!-- MARQUEE -->
 <div class="marquee-strip"><div class="marquee-inner"><span class="marquee-item">Editörlük <span class="marquee-dot"></span></span><span class="marquee-item">Dizgi & Mizanpaj <span class="marquee-dot"></span></span><span class="marquee-item">Kapak Tasarımı <span class="marquee-dot"></span></span><span class="marquee-item">Çeviri <span class="marquee-dot"></span></span><span class="marquee-item">Yayın Danışmanlığı <span class="marquee-dot"></span></span><span class="marquee-item">Dağıtım <span class="marquee-dot"></span></span><span class="marquee-item">ISBN & Bandrol</span></div></div>
 
-<!-- ABOUT with integrated article + PDF premium section - PDF HATASI DÜZELTİLDİ -->
+<!-- ABOUT with integrated article + PDF premium section -->
 <section class="about">
   <div class="about-grid">
     <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
@@ -1157,20 +1178,21 @@ footer {
       </div>
       <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için aşağıdaki dosyaları inceleyebilirsiniz.</p>
       
-<!-- PREMIUM PDF DOWNLOAD SECTION - ÇALIŞAN PDF BAĞLANTILARI -->
+<!-- PREMIUM PDF DOWNLOAD SECTION - 3'lü grid hizalama -->
 <div class="premium-downloads">
   <h4><i class="fas fa-file-pdf"></i> Akademik Belgeler & Özel Yayınlar</h4>
   <div class="download-buttons-grid">
-    <a href="https://www.platanusbooks.com/dosyalar/taninmis.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i> Tanınmış Yayınevi Belgesi PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/kriz.pdf" class="btn-pdf" target="_blank"><i class="fas fa-book-open"></i> Krizden Dayanıklılığa PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/modern.pdf" class="btn-pdf" target="_blank"><i class="fas fa-brain"></i> Modern Ruh Sağlığı PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/toplumsal.pdf" class="btn-pdf" target="_blank"><i class="fas fa-hand-holding-heart"></i> Toplumsal Kırılganlık PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/e-kitap.pdf" class="btn-pdf" target="_blank"><i class="fas fa-music"></i> Türk Obua Tarihi - Zerrin Tan PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/lactic.pdf" class="btn-pdf" target="_blank"><i class="fas fa-microscope"></i> Lactic Acid Bacteria Derived PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/x.pdf" class="btn-pdf" target="_blank"><i class="fas fa-palette"></i> Tasarım Metodolojileri 2026 PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/giysinin.pdf" class="btn-pdf" target="_blank"><i class="fas fa-tshirt"></i> Giysinin Dili PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/yeni.pdf" class="btn-pdf" target="_blank"><i class="fas fa-landmark"></i> Yeni Çağ Tarihi PDF</a>
-    <a href="https://www.platanusbooks.com/dosyalar/lichenplanusson.pdf" class="btn-pdf" target="_blank"><i class="fas fa-notes-medical"></i> Lichen Planus Son PDF</a>
+    <a href="https://www.platanusbooks.com/dosyalar/taninmis.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i><span class="btn-label">Tanınmış Yayınevi Belgesi PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/kriz.pdf" class="btn-pdf" target="_blank"><i class="fas fa-book-open"></i><span class="btn-label">Krizden Dayanıklılığa PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/modern.pdf" class="btn-pdf" target="_blank"><i class="fas fa-brain"></i><span class="btn-label">Modern Ruh Sağlığı PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/toplumsal.pdf" class="btn-pdf" target="_blank"><i class="fas fa-hand-holding-heart"></i><span class="btn-label">Toplumsal Kırılganlık PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/e-kitap.pdf" class="btn-pdf" target="_blank"><i class="fas fa-music"></i><span class="btn-label">Türk Obua Tarihi - Zerrin Tan PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/lactic.pdf" class="btn-pdf" target="_blank"><i class="fas fa-microscope"></i><span class="btn-label">Lactic Acid Bacteria Derived PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/x.pdf" class="btn-pdf" target="_blank"><i class="fas fa-palette"></i><span class="btn-label">Tasarım Metodolojileri 2026 PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/giysinin.pdf" class="btn-pdf" target="_blank"><i class="fas fa-tshirt"></i><span class="btn-label">Giysinin Dili PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/yeni.pdf" class="btn-pdf" target="_blank"><i class="fas fa-landmark"></i><span class="btn-label">Yeni Çağ Tarihi PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/lichenplanusson.pdf" class="btn-pdf" target="_blank"><i class="fas fa-notes-medical"></i><span class="btn-label">Lichen Planus PDF</span></a>
+    <a href="https://www.platanusbooks.com/dosyalar/acuteleukemias.pdf" class="btn-pdf" target="_blank"><i class="fas fa-dna"></i><span class="btn-label">Acute Leukemias PDF</span></a>
   </div>
   <p style="font-size:0.75rem; margin-top:0.8rem; color:var(--muted);">
     <i class="fas fa-check-circle"></i> Uluslararası indeksler, ilk 500 üniversite katalog kanıtları ve detaylı ekler için PDF dosyalarına tıklayın.
