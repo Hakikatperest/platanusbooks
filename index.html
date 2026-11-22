@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Platanuss Books — Prestijli Yayıncılık | Akademik Yayınlar</title>
-<meta name="description" content="Platanuss Books - Editörlük, dizgi-mizanpaj, kapak tasarımı, çeviri ve dağıtım hizmetleri..">
+<meta name="description" content="Platanuss Books - Editörlük, dizgi-mizanpaj, kapak tasarımı, çeviri ve dağıtım hizmetleri.">
 
+<meta name="theme-color" content="#FFFBF5">
+<link rel="canonical" href="https://www.platanusbooks.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Platanuss Books — Prestijli Yayıncılık | Akademik Yayınlar">
+<meta property="og:description" content="Editörlük, dizgi-mizanpaj, kapak tasarımı, çeviri ve dağıtım hizmetleri.">
+<meta property="og:url" content="https://www.platanusbooks.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FFFBF5' stroke='%23B8860B' stroke-width='3'/%3E%3Cpath d='M32 22c-5-3-10-3.500-15-2v22c5-1.500 10-1 15 2 5-3 10-3.500 15-2V20c-5-1.500-10-1-15 2zm0 0v22' fill='none' stroke='%23B8860B' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,23 +30,34 @@
   --cream: #FFFBF5;
   --muted: #6B5B4E;
   --rule: rgba(184,134,11,0.25);
-  
+  --rule-soft: rgba(184,134,11,0.14);
+  --paper: #FFFFFF;
+
   --f-display: 'Playfair Display', Georgia, serif;
   --f-body: 'EB Garamond', Georgia, serif;
   --f-sans: 'Montserrat', sans-serif;
-  
+
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --r-sm: 6px;
+  --r-md: 12px;
+  --shadow-sm: 0 1px 2px rgba(44,36,30,0.04), 0 4px 14px -6px rgba(44,36,30,0.10);
+  --shadow-md: 0 2px 4px rgba(44,36,30,0.04), 0 18px 36px -18px rgba(44,36,30,0.22);
+  --wrap: 1240px;
+  --gutter: 3rem;
+  --header-h: 76px;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--f-body);
   color: var(--ink);
   background: var(--cream);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -52,1095 +70,844 @@ body::before {
   opacity: 0.4;
 }
 
-::-webkit-scrollbar { width: 5px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+::selection { background: rgba(184,134,11,0.22); }
+:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; border-radius: 2px; }
+section[id], div[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--parchment); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
 /* HEADER */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  transition: all 0.4s var(--ease);
 }
-
 .header-inner {
-  background: rgba(255, 251, 245, 0.96);
+  background: rgba(255, 251, 245, 0.94);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3rem;
-  height: 78px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+  gap: 2rem;
+  padding: 0 var(--gutter);
+  height: var(--header-h);
+  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
+header.scrolled .header-inner {
+  border-bottom-color: var(--rule);
+  box-shadow: 0 10px 30px -18px rgba(44,36,30,0.28);
 }
-
+.logo-wrap { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
 .logo-emblem {
-  width: 42px;
-  height: 42px;
+  width: 42px; height: 42px;
   border: 1.5px solid var(--gold);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   color: var(--gold);
-  font-size: 1rem;
+  font-size: 0.95rem;
   background: rgba(184,134,11,0.05);
   flex-shrink: 0;
 }
+.logo-type { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-name { font-family: var(--f-display); font-size: 1.3rem; font-weight: 800; color: var(--ink); letter-spacing: 0.06em; }
+.logo-sub { font-family: var(--f-sans); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.25em; color: var(--gold-dark); text-transform: uppercase; margin-top: 2px; }
 
-.logo-type {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.logo-name {
-  font-family: var(--f-display);
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: 0.06em;
-}
-
-.logo-sub {
+.main-nav { display: flex; align-items: center; gap: 2.1rem; }
+.main-nav a {
   font-family: var(--f-sans);
-  font-size: 0.52rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.25em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-top: 2px;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.25s var(--ease);
+  white-space: nowrap;
 }
-
-.header-contact {
-  display: flex;
-  align-items: center;
-  gap: 1.8rem;
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
 }
+.main-nav a:hover, .main-nav a.current { color: var(--gold-dark); }
+.main-nav a:hover::after, .main-nav a.current::after { transform: scaleX(1); }
 
+.header-contact { display: flex; align-items: center; gap: 1.4rem; flex-shrink: 0; }
+.header-phone {
+  font-family: var(--f-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-variant-numeric: tabular-nums;
+}
+.header-phone i { color: var(--gold); font-size: 0.78rem; }
+.header-phone:hover { color: var(--gold-dark); }
 .btn-header {
-  background: transparent;
+  background: var(--gold);
   border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 0.55rem 1.5rem;
+  color: white;
+  padding: 0.62rem 1.5rem;
   font-family: var(--f-sans);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.35s var(--ease);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
   border-radius: 40px;
 }
-
-.btn-header:hover {
-  background: var(--gold);
-  color: white;
+.btn-header:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+.nav-toggle {
+  display: none;
+  width: 42px; height: 42px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column; align-items: center; justify-content: center; gap: 4px;
 }
+.nav-toggle span { width: 16px; height: 1.5px; background: var(--ink); transition: transform 0.25s var(--ease), opacity 0.2s; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* BUTTONS */
+.btn-primary, .btn-ghost, .btn-wa, .btn-wa-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.9rem;
+  font-family: var(--f-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 48px;
+  border: 1px solid transparent;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.btn-primary { background: var(--gold); color: white; box-shadow: 0 8px 18px -10px rgba(184,134,11,0.7); }
+.btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--gold); }
+.btn-ghost:hover { background: var(--gold); color: white; }
+.btn-wa, .btn-wa-hero { background: #25D366; color: white; box-shadow: 0 8px 18px -10px rgba(37,211,102,0.7); }
+.btn-wa i, .btn-wa-hero i { font-size: 1.05rem; }
+.btn-wa:hover, .btn-wa-hero:hover { background: #128C7E; color: white; transform: translateY(-2px); }
 
 /* HERO */
 .hero {
-  min-height: 100vh;
+  min-height: min(100vh, 900px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   position: relative;
   overflow: hidden;
-}
-
-.hero-left {
   background: linear-gradient(135deg, #F7EFE2 0%, #FFF8F0 100%);
+}
+.hero-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 5rem 6rem 5rem;
+  padding: calc(var(--header-h) + 4rem) 4.5rem 5rem max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
   position: relative;
   z-index: 2;
 }
-
-.hero-left::after {
-  content: '';
-  position: absolute;
-  top: 0; right: -80px;
-  width: 160px;
-  height: 100%;
-  background: linear-gradient(135deg, #F7EFE2 0%, #FFF8F0 100%);
-  clip-path: polygon(0 0, 50% 0, 100% 50%, 50% 100%, 0 100%);
-  z-index: 3;
-}
-
 .hero-eyebrow {
   font-family: var(--f-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold-dark);
   margin-bottom: 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex; align-items: center; gap: 1rem;
 }
-
-.hero-eyebrow::before {
-  content: '';
-  width: 44px;
-  height: 2px;
-  background: var(--gold);
-}
-
+.hero-eyebrow::before { content: ''; width: 44px; height: 1.5px; background: var(--gold); }
 .hero-title {
   font-family: var(--f-display);
-  font-size: clamp(3rem, 5vw, 5.3rem);
+  font-size: clamp(2.9rem, 5.2vw, 5.2rem);
   font-weight: 800;
-  line-height: 0.95;
+  line-height: 1;
+  letter-spacing: -0.015em;
   color: var(--ink);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
-
-.hero-title em {
-  font-style: italic;
-  color: var(--gold);
-  font-weight: 500;
-}
-
+.hero-title em { font-style: italic; color: var(--gold); font-weight: 500; }
 .hero-title-sub {
   font-family: var(--f-display);
-  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
   font-weight: 400;
   font-style: italic;
   color: var(--ink-light);
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  opacity: 0.8;
+  line-height: 1.15;
 }
-
-.hero-rule {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(to right, var(--gold), transparent);
-  margin: 1.5rem 0 1.8rem;
-}
-
-.hero-body {
-  font-family: var(--f-body);
-  font-size: 1.12rem;
-  line-height: 1.8;
-  color: var(--ink-light);
-  max-width: 460px;
-  margin-bottom: 2.8rem;
-}
-
-.hero-actions {
+.hero-rule { width: 80px; height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin: 2rem 0 1.6rem; }
+.hero-body { font-size: 1.2rem; line-height: 1.7; color: var(--ink-light); max-width: 480px; margin-bottom: 2.4rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-facts {
+  list-style: none;
   display: flex;
-  gap: 1.2rem;
   flex-wrap: wrap;
+  gap: 0.6rem 2.2rem;
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+  max-width: 560px;
 }
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: var(--gold);
-  color: white;
-  padding: 0.9rem 2rem;
-  font-family: var(--f-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s var(--ease);
-  border-radius: 48px;
-  box-shadow: 0 4px 12px rgba(184,134,11,0.25);
-}
-
-.btn-primary:hover {
-  background: var(--gold-dark);
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--gold);
-  padding: 0.9rem 2rem;
+.hero-facts li {
   font-family: var(--f-sans);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s var(--ease);
-  border-radius: 48px;
+  letter-spacing: 0.04em;
+  color: var(--ink-light);
+  display: inline-flex; align-items: center; gap: 0.55rem;
 }
+.hero-facts i { color: var(--gold); font-size: 0.78rem; }
 
-.btn-ghost:hover {
-  background: var(--gold);
-  color: white;
+.hero-right { position: relative; overflow: hidden; z-index: 1; min-height: 360px; }
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(44,36,30,0.28) 0%, rgba(44,36,30,0) 35%), linear-gradient(0deg, rgba(44,36,30,0.55) 0%, rgba(44,36,30,0) 45%);
+  z-index: 2;
 }
-
-.hero-right {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+.hero-right::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--header-h) + 1.6rem) 1.6rem 1.6rem 1.6rem;
+  border: 1px solid rgba(255,244,220,0.35);
+  z-index: 3;
+  pointer-events: none;
 }
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.8) sepia(0.1);
-}
-
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.86) sepia(0.12); }
 .hero-quote-float {
   position: absolute;
-  bottom: 3rem;
-  right: 3rem;
-  background: rgba(184,134,11,0.9);
-  backdrop-filter: blur(8px);
-  padding: 1.4rem 1.8rem;
-  max-width: 280px;
+  left: 3.6rem; bottom: 3.6rem;
+  max-width: 340px;
   z-index: 5;
-  border-radius: 4px;
+  padding-left: 1.3rem;
+  border-left: 2px solid var(--gold-light);
 }
-
-.hero-quote-float blockquote {
-  font-family: var(--f-display);
-  font-size: 1rem;
-  font-style: italic;
-  color: #fffaf0;
-  line-height: 1.5;
-}
-
+.hero-quote-float blockquote { font-family: var(--f-display); font-size: 1.3rem; font-style: italic; color: #FFFAF0; line-height: 1.45; }
 .hero-quote-float cite {
   display: block;
   font-family: var(--f-sans);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #FFF2DF;
-  margin-top: 0.7rem;
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #F3DDB0;
+  margin-top: 0.9rem;
   font-style: normal;
 }
 
 /* MARQUEE */
-.marquee-strip {
-  background: var(--gold);
-  padding: 0.8rem 0;
-  overflow: hidden;
-  position: relative;
-  z-index: 10;
-}
-
-.marquee-inner {
-  display: flex;
-  gap: 0;
-  animation: marquee 25s linear infinite;
-  white-space: nowrap;
-}
-
+.marquee-strip { background: var(--gold); padding: 0.85rem 0; overflow: hidden; position: relative; z-index: 10; }
+.marquee-inner { display: flex; width: max-content; animation: marquee 42s linear infinite; white-space: nowrap; }
 .marquee-item {
   font-family: var(--f-sans);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
   color: white;
-  padding: 0 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 1.5rem;
+  padding-left: 2.2rem;
+  display: inline-flex; align-items: center; gap: 2.2rem;
 }
+.marquee-item::after { content: ''; width: 4px; height: 4px; background: rgba(255,255,255,0.85); transform: rotate(45deg); display: inline-block; }
+.marquee-dot { display: none; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.marquee-dot {
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
+/* SECTION TYPE */
 .section-label {
   font-family: var(--f-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.1rem;
+  display: flex; align-items: center; gap: 1rem;
 }
-
-.section-label::before {
-  content: '';
-  width: 30px;
-  height: 1.5px;
-  background: var(--gold);
-}
-
+.section-label::before { content: ''; width: 30px; height: 1.5px; background: var(--gold); }
 .section-heading {
   font-family: var(--f-display);
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   color: var(--ink);
   margin-bottom: 1.2rem;
 }
-
-.section-heading em {
-  font-style: italic;
-  color: var(--gold-dark);
-}
+.section-heading em { font-style: italic; color: var(--gold-dark); font-weight: 500; }
+.section-heading sup { font-family: var(--f-sans); font-size: 0.32em; font-weight: 600; vertical-align: super; color: var(--gold-dark); margin-left: 0.1em; }
+.section-lead { font-size: 1.15rem; line-height: 1.65; color: var(--muted); max-width: 620px; }
 
 /* ABOUT */
-.about {
-  padding: 7rem 0;
-  background: var(--cream);
-}
+.about { padding: 7rem 0 6rem; background: var(--cream); }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 6rem;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 5.5rem;
   align-items: start;
-  max-width: 1200px;
+  max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 var(--gutter);
 }
-.about-visual { position: relative; }
-.about-img-main {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 2px;
-  box-shadow: 0 25px 40px -20px rgba(0,0,0,0.2);
+.about-visual { position: sticky; top: calc(var(--header-h) + 2rem); padding: 0 2rem 2.5rem 0; }
+.about-visual::before {
+  content: '';
+  position: absolute;
+  top: -1rem; left: -1rem;
+  width: 45%; height: 40%;
+  border-top: 1px solid var(--gold); border-left: 1px solid var(--gold);
+  opacity: 0.6;
 }
+.about-img-main { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 2px; box-shadow: var(--shadow-md); position: relative; }
 .about-img-accent {
   position: absolute;
-  width: 55%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  bottom: -2rem;
-  right: -2rem;
+  width: 46%; aspect-ratio: 1; object-fit: cover;
+  bottom: 0; right: 0;
   border: 8px solid var(--cream);
+  box-shadow: var(--shadow-sm);
 }
 .about-stat-badge {
   position: absolute;
-  top: 2rem;
-  right: -1rem;
+  top: 2rem; right: 0.6rem;
   background: var(--ink);
-  padding: 1rem 1.3rem;
-  text-align: center;
+  padding: 1.1rem 1.5rem 1.15rem;
   border-left: 3px solid var(--gold);
+  box-shadow: var(--shadow-md);
+  display: flex; flex-direction: column; gap: 0.35rem;
 }
-.stat-number {
-  font-family: var(--f-display);
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--gold);
-}
-.about-text {
-  font-size: 1.18rem;
-  line-height: 1.75;
-  color: var(--ink-light);
-  margin-bottom: 1.2rem;
-}
+.stat-number { font-family: var(--f-display); font-size: 2.2rem; font-weight: 800; color: var(--gold-light); line-height: 1; font-variant-numeric: lining-nums; }
+.stat-label { font-family: var(--f-sans); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E9DDCB; }
+.about-text { font-size: 1.2rem; line-height: 1.72; color: var(--ink-light); margin-bottom: 1.2rem; }
+.about-text strong { color: var(--ink); font-weight: 600; }
 .regulation-block {
   background: #FEF5E8;
-  border-left: 4px solid var(--gold);
-  padding: 1.5rem 2rem;
-  margin: 1.8rem 0;
-  border-radius: 12px;
-  font-size: 1rem;
-  line-height: 1.7;
+  border: 1px solid var(--rule-soft);
+  border-left: 3px solid var(--gold);
+  padding: 1.7rem 2rem 1rem;
+  margin: 2rem 0;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: var(--ink-light);
 }
-.regulation-block p {
-  margin-bottom: 0.9rem;
+.regulation-block p { margin-bottom: 0.95rem; }
+.regulation-block p:first-child {
+  font-family: var(--f-sans);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-dark);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule);
 }
-.badge-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin: 1.5rem 0;
-}
+.regulation-block p:first-child strong { font-weight: 700; }
+.regulation-block strong { color: var(--ink); font-weight: 600; }
+.badge-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.6rem 0 1.8rem; }
 .badge-list span {
   background: white;
   border: 1px solid var(--rule);
-  padding: 0.45rem 1.2rem;
+  padding: 0.5rem 1rem;
   border-radius: 40px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--gold-dark);
+  font-family: var(--f-sans);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--ink-light);
+  display: inline-flex; align-items: center; gap: 0.55rem;
 }
+.badge-list i { color: var(--gold); font-size: 0.78rem; }
 .about-values {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin-top: 1.8rem;
+  gap: 1.5rem 2rem;
+  margin-top: 2.2rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--rule);
 }
-.value-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-}
+.value-item { display: flex; align-items: flex-start; gap: 0.95rem; }
 .value-icon {
-  width: 38px;
-  height: 38px;
+  width: 42px; height: 42px; flex-shrink: 0;
   border: 1px solid rgba(184,134,11,0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   color: var(--gold);
   border-radius: 50%;
   background: white;
-}
-.value-text h5 {
-  font-family: var(--f-sans);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.value-text p { 
   font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.4;
 }
+.value-text h5 { font-family: var(--f-sans); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.value-text p { font-size: 1rem; color: var(--muted); line-height: 1.45; }
 
-/* DOWNLOAD PREMIUM SECTION - Full width 3'lü grid */
-.premium-downloads-wrap {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  padding: 0 3rem;
-}
+/* BELGELER */
+.premium-downloads-wrap { max-width: var(--wrap); margin: 6rem auto 0; padding: 0 var(--gutter); }
 .premium-downloads {
   background: linear-gradient(115deg, #FCF5EA 0%, #FFF9F0 100%);
-  border-radius: 28px;
-  padding: 2.5rem 3rem;
-  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: var(--r-md);
+  padding: 3rem;
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.premium-downloads::before {
+  content: '';
+  position: absolute; top: 0; left: 3rem;
+  width: 64px; height: 3px;
+  background: var(--gold);
 }
 .premium-downloads h4 {
   font-family: var(--f-display);
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: var(--gold-dark);
+  margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.9rem;
+  color: var(--ink);
+  line-height: 1.2;
 }
-/* Masaüstünde 3'lü hizalı grid - tam isimler için yeterli alan */
-.download-buttons-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.4rem 0 1rem;
-}
+.premium-downloads h4 i { color: var(--gold); font-size: 0.85em; }
+.downloads-note { font-size: 1.05rem; color: var(--muted); line-height: 1.6; max-width: 720px; }
+.download-buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 2rem 0 0; }
 .btn-pdf {
   background: white;
-  border: 1px solid var(--gold);
-  padding: 0.85rem 1.4rem;
-  border-radius: 60px;
+  border: 1px solid var(--rule-soft);
+  padding: 0.85rem 1rem 0.85rem 0.9rem;
+  border-radius: var(--r-sm);
   font-family: var(--f-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.78rem; font-weight: 600;
   text-decoration: none;
-  color: var(--gold-dark);
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.7rem;
-  transition: all 0.2s;
+  color: var(--ink);
+  display: flex; align-items: center; gap: 0.85rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   cursor: pointer;
-  line-height: 1.3;
-  min-height: 48px;
+  line-height: 1.4;
+  min-height: 62px;
 }
-.btn-pdf:hover {
-  background: var(--gold);
-  color: white;
-  border-color: var(--gold);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(184,134,11,0.25);
+.btn-pdf::before {
+  content: '\f1c1';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--gold);
+  width: 38px; height: 38px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(184,134,11,0.09);
+  border-radius: var(--r-sm);
+  transition: background 0.2s, color 0.2s;
 }
-.btn-pdf i {
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  width: 20px;
-  text-align: center;
-}
-.btn-pdf .btn-label {
-  flex: 1;
-}
-
-/* Tablette 2'li, mobilde tek sütun */
-@media (max-width: 1024px) {
-  .premium-downloads-wrap { padding: 0 2rem; }
-  .premium-downloads { padding: 2rem; }
-  .download-buttons-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .premium-downloads-wrap { padding: 0 1rem; }
-  .premium-downloads { padding: 1.5rem; }
-  .download-buttons-grid { grid-template-columns: 1fr; }
-  .btn-pdf { font-size: 0.75rem; }
-}
-
-  /* HERO BÖLÜMÜ İÇİN YEŞİL WHATSAPP BUTONU */
-.btn-wa-hero {
-  background: #25D366;
-  color: white;
-  padding: 0.9rem 2rem;
-  border-radius: 48px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
+.btn-pdf .btn-label { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.btn-pdf i { order: 3; font-size: 0.8rem; flex-shrink: 0; width: 20px; text-align: center; color: var(--gold-dark); opacity: 0.55; transition: opacity 0.2s, transform 0.2s; }
+.btn-pdf:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn-pdf:hover::before { background: var(--gold); color: white; }
+.btn-pdf:hover i { opacity: 1; transform: translateY(2px); }
+.list-toggle {
+  display: none;
+  margin: 1.2rem auto 0;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-dark);
   font-family: var(--f-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: all 0.3s var(--ease);
-  border: none;
-  box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.8rem 1.6rem;
+  border-radius: 40px;
+  cursor: pointer;
+  align-items: center; gap: 0.6rem;
+  transition: background 0.2s, color 0.2s;
 }
-
-.btn-wa-hero:hover {
-  background: #128C7E;
-  transform: translateY(-2px);
-  color: white;
-}
+.list-toggle:hover { background: var(--gold); color: white; }
+.list-toggle i { font-size: 0.7rem; transition: transform 0.25s; }
+.list-toggle[aria-expanded="true"] i { transform: rotate(180deg); }
 
 /* SERVICES */
-.services {
-  padding: 7rem 0;
-  background: linear-gradient(145deg, #FEF9F2 0%, #FCF5EA 100%);
-  position: relative;
-}
-.services-header { text-align: center; margin-bottom: 4rem; }
+.services { padding: 7rem 0; background: linear-gradient(145deg, #FEF9F2 0%, #FCF5EA 100%); position: relative; }
+.services-header { text-align: center; margin-bottom: 3.5rem; padding: 0 var(--gutter); }
 .services-header .section-label { justify-content: center; }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
+.services-header .section-label::after { content: ''; width: 30px; height: 1.5px; background: var(--gold); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 .service-card {
   background: #FFFFFF;
-  border-radius: 28px;
+  border-radius: var(--r-md);
   overflow: hidden;
-  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  border: 1px solid rgba(184,134,11,0.2);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  border: 1px solid var(--rule-soft);
   position: relative;
+  display: flex; flex-direction: column;
 }
-.service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 35px 45px -18px rgba(184,134,11,0.25);
-  border-color: var(--gold-light);
-}
-.service-img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease);
-}
-.service-card:hover .service-img {
-  transform: scale(1.02);
-}
-.service-body {
-  padding: 1.8rem 1.8rem 2rem;
-  position: relative;
-}
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 24px 40px -22px rgba(184,134,11,0.45); border-color: var(--rule); }
+.service-img { display: block; width: 100%; height: 200px; object-fit: cover; flex-shrink: 0; filter: sepia(0.12) saturate(0.92); transition: filter 0.4s var(--ease); }
+.service-card:hover .service-img { filter: none; }
+.service-body { padding: 0 1.8rem 1.9rem; position: relative; flex: 1; display: flex; flex-direction: column; }
 .service-icon-large {
-  width: 56px;
-  height: 56px;
-  background: rgba(184,134,11,0.12);
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.2rem;
+  width: 54px; height: 54px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: -27px 0 1.1rem;
   color: var(--gold-dark);
-  font-size: 1.6rem;
-  transition: all 0.3s;
+  font-size: 1.2rem;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  position: relative;
+  box-shadow: var(--shadow-sm);
 }
-.service-card:hover .service-icon-large {
-  background: var(--gold);
-  color: white;
-}
-.service-title {
-  font-family: var(--f-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0.25rem 0 0.8rem;
-}
-.service-excerpt {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 1.4rem;
-  border-left: 2px solid rgba(184,134,11,0.3);
-  padding-left: 1rem;
-}
-.service-features {
-  list-style: none;
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-}
-.service-features li {
-  font-size: 0.8rem;
-  font-family: var(--f-sans);
-  font-weight: 500;
-  color: var(--ink-light);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.service-features li i {
-  color: var(--gold);
-  font-size: 0.75rem;
-  width: 18px;
-}
+.service-card:hover .service-icon-large { background: var(--gold); border-color: var(--gold); color: white; }
 .premium-tag {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(184,134,11,0.9);
-  color: white;
+  top: -186px; left: 14px; right: auto;
+  background: rgba(44,36,30,0.82);
+  color: #F6E7C8;
   font-family: var(--f-sans);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 0.3rem 0.8rem;
-  border-radius: 30px;
-  backdrop-filter: blur(2px);
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
+.service-title { font-family: var(--f-display); font-size: 1.45rem; font-weight: 700; margin: 0 0 0.7rem; line-height: 1.2; }
+.service-excerpt { font-size: 1.05rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.3rem; }
+.service-features { list-style: none; margin-top: auto; padding-top: 1.2rem; border-top: 1px solid var(--rule-soft); }
+.service-features li {
+  font-size: 0.8rem; font-family: var(--f-sans); font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 0.6rem;
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  line-height: 1.45;
+}
+.service-features li:last-child { margin-bottom: 0; }
+.service-features li i { color: var(--gold); font-size: 0.75rem; width: 16px; margin-top: 0.22em; flex-shrink: 0; }
 
 /* KİTAP BÖLÜMÜ */
-.books-section {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #FEF9F0 0%, #FFFCF7 100%);
-}
-.books-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
+.books-section { padding: 7rem 0; background: linear-gradient(135deg, #FEF9F0 0%, #FFFCF7 100%); border-top: 1px solid var(--rule-soft); }
+.books-container { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.books-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.books-head .section-heading { margin-bottom: 0; }
 .period-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-.period-btn {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
   background: white;
   border: 1px solid var(--rule);
-  padding: 0.9rem 2rem;
+  border-radius: 60px;
+  max-width: 100%;
+}
+.period-btn {
+  background: transparent;
+  border: 0;
+  padding: 0.75rem 1.5rem;
   font-family: var(--f-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--ink);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--ink-light);
   cursor: pointer;
   border-radius: 60px;
   text-align: center;
-  transition: all 0.3s;
+  transition: background 0.25s, color 0.25s;
+  white-space: nowrap;
 }
-.period-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-.period-btn.active {
-  background: var(--gold);
-  color: white;
-  border-color: var(--gold);
-}
-.books-content {
-  background: white;
-  border-radius: 28px;
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
-  overflow: hidden;
-}
+.period-btn:hover { color: var(--gold-dark); }
+.period-btn.active { background: var(--gold); color: white; }
+.books-content { background: white; border-radius: var(--r-md); box-shadow: var(--shadow-md); overflow: hidden; border: 1px solid var(--rule-soft); }
 .period-title {
   background: linear-gradient(135deg, var(--ink) 0%, #3A2C24 100%);
-  padding: 1.5rem 2rem;
+  padding: 1.6rem 2.2rem;
   border-bottom: 3px solid var(--gold);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem 2rem; flex-wrap: wrap;
 }
-.period-title h3 {
-  font-family: var(--f-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: white;
-}
-.period-title h3 span { color: var(--gold); }
-.books-list {
-  padding: 2rem;
-  max-height: 650px;
-  overflow-y: auto;
-}
-.book-category { margin-bottom: 2rem; }
+.period-title h3 { font-family: var(--f-display); font-size: 1.55rem; font-weight: 700; color: white; font-variant-numeric: lining-nums; }
+.period-title h3 span { color: var(--gold-light); }
+.period-title p { font-family: var(--f-sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #CBBBA6; }
+.books-list { padding: 2.2rem; }
+.book-category { margin-bottom: 2.5rem; }
+.book-category:last-child { margin-bottom: 0; }
 .category-title {
-  font-family: var(--f-display);
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--f-sans);
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em;
   color: var(--gold-dark);
-  border-bottom: 2px solid var(--rule);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.4rem;
+  display: flex; align-items: center; gap: 0.7rem;
 }
-.book-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 0.8rem;
-}
+.category-title .count { margin-left: auto; font-weight: 600; letter-spacing: 0.06em; color: var(--muted); }
+.book-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; counter-reset: kitap; }
 .book-card {
-  background: var(--cream);
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(184,134,11,0.1);
+  counter-increment: kitap;
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule-soft);
 }
-.book-title {
+.book-card::before {
+  content: counter(kitap, decimal-leading-zero);
   font-family: var(--f-display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--ink);
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: lining-nums tabular-nums;
+  flex-shrink: 0;
+  width: 1.6rem;
 }
+.book-title { font-family: var(--f-body); font-size: 1.08rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.book-items.is-collapsed .book-card:nth-child(n+13) { display: none; }
+.books-list .list-toggle { display: inline-flex; }
+.toggle-row { text-align: center; margin-top: 1.4rem; }
 
-/* COUNTDOWN */
-.countdown-wrapper {
-  background: var(--parchment);
-  padding: 2rem;
-  border-radius: 24px;
-  text-align: center;
-  margin-bottom: 2rem;
-  border: 1px solid var(--rule);
-}
-.countdown-title {
-  font-family: var(--f-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.countdown-timer {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.time-block {
-  background: white;
-  border-radius: 20px;
-  padding: 1rem 1.5rem;
-  min-width: 100px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.05);
-}
-.time-number {
-  font-family: var(--f-display);
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: var(--gold);
-  line-height: 1;
-}
-.time-label {
-  font-family: var(--f-sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.empty-message { text-align: center; padding: 3rem; color: var(--muted); }
+/* COUNTDOWN / DURUM */
+.countdown-wrapper { background: var(--parchment); padding: 2.2rem 2rem; border-radius: var(--r-md); text-align: center; margin-bottom: 1rem; border: 1px solid var(--rule); }
+.countdown-title { font-family: var(--f-sans); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 1.5rem; }
+.countdown-title i { margin-right: 0.4rem; }
+.countdown-timer { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.time-block { background: white; border: 1px solid var(--rule-soft); border-radius: var(--r-sm); padding: 1.1rem 1rem 0.9rem; min-width: 104px; }
+.time-number { font-family: var(--f-display); font-size: 2.6rem; font-weight: 700; color: var(--gold); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.time-label { font-family: var(--f-sans); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
+.period-status { display: flex; align-items: center; justify-content: center; gap: 0.8rem; font-family: var(--f-display); font-size: 1.3rem; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.period-status i { color: var(--gold); font-size: 1.1rem; }
+.empty-message { text-align: center; padding: 2.5rem 1rem 1.5rem; color: var(--muted); font-size: 1.1rem; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+.empty-message i { color: var(--gold); font-size: 1.3rem; margin-bottom: 0.9rem; display: block; }
 
 /* YAYIN SÜRECİ */
-.publishing-journey {
-  padding: 7rem 0;
-  background: #FFFCF8;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.journey-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
-.journey-header {
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto 4rem auto;
-}
-.journey-sub {
-  font-family: var(--f-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 1rem;
-}
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  position: relative;
-}
+.publishing-journey { padding: 7rem 0; background: #FFFCF8; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); }
+.journey-container { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.journey-header { text-align: center; max-width: 720px; margin: 0 auto 4rem auto; }
+.journey-header .section-label::after { content: ''; width: 30px; height: 1.5px; background: var(--gold); }
+.journey-sub { font-family: var(--f-body); font-size: 1.2rem; line-height: 1.6; color: var(--muted); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.2rem; position: relative; }
 .process-steps::before {
   content: '';
   position: absolute;
-  top: 3rem;
-  left: 10%;
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+  top: 28px; left: 12.5%; width: 75%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 12px);
+  opacity: 0.6;
   z-index: 1;
 }
-.step-card {
-  background: white;
-  border-radius: 32px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 12px 28px -12px rgba(0,0,0,0.08);
-  transition: all 0.3s;
-  border: 1px solid rgba(184,134,11,0.15);
-}
-.step-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--gold-light);
-  box-shadow: 0 25px 35px -16px rgba(184,134,11,0.2);
-}
+.step-card { text-align: center; position: relative; z-index: 2; padding: 0 0.4rem; }
 .step-number {
-  width: 56px;
-  height: 56px;
-  background: var(--gold);
-  color: white;
+  width: 56px; height: 56px;
+  background: #FFFCF8;
+  border: 1.5px solid var(--gold);
+  color: var(--gold-dark);
   font-family: var(--f-display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 60px;
-  margin: 0 auto 1.5rem auto;
-  box-shadow: 0 6px 14px rgba(184,134,11,0.3);
+  font-size: 1.2rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1.6rem auto;
+  transition: background 0.3s, color 0.3s;
 }
-.step-title {
-  font-family: var(--f-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: var(--ink);
-}
-.step-desc {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-@media (max-width: 1024px) {
-  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  .process-steps::before { display: none; }
-}
-@media (max-width: 640px) {
-  .process-steps { grid-template-columns: 1fr; }
-}
+.step-card:hover .step-number { background: var(--gold); color: white; }
+.step-title { font-family: var(--f-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--ink); line-height: 1.25; }
+.step-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.6; }
 
 /* CTA */
-.cta-banner {
-  background: linear-gradient(125deg, #F6EFE4 0%, #FEF7EF 100%);
-  padding: 5rem 0;
-}
+.cta-banner { background: linear-gradient(125deg, #F6EFE4 0%, #FEF7EF 100%); padding: 6rem var(--gutter); }
 .cta-content {
-  max-width: 700px;
+  max-width: 860px;
   margin: 0 auto;
   text-align: center;
-  padding: 0 2rem;
+  padding: 4rem 2.5rem;
+  border: 1px solid var(--rule);
+  background: rgba(255,251,245,0.7);
+  position: relative;
 }
+.cta-content::before, .cta-content::after { content: ''; position: absolute; width: 34px; height: 34px; border: 2px solid var(--gold); }
+.cta-content::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.cta-content::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.cta-lead { font-size: 1.2rem; color: var(--ink-light); line-height: 1.6; }
 .cta-phone {
   font-family: var(--f-display);
-  font-size: 1.8rem;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 700;
   color: var(--gold-dark);
   text-decoration: none;
   display: inline-block;
-  margin: 1.2rem 0;
+  margin: 1.4rem 0 1.6rem;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.01em;
 }
-.cta-buttons-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 1rem;
-}
-.btn-wa {
-  background: #25D366;
-  color: white;
-  padding: 0.9rem 2rem;
-  border-radius: 48px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--f-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: 0.2s;
-}
-.btn-wa:hover { background: #128C7E; transform: translateY(-2px); }
+.cta-phone:hover { color: var(--gold); }
+.cta-buttons-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 
 /* FOOTER */
-footer {
-  background: #1E1915;
-  padding: 4rem 0 2rem;
-  color: #e2dbd1;
-}
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-.footer-brand-name {
-  font-family: var(--f-display);
-  font-size: 1.8rem;
-  color: white;
-}
-.footer-brand-name span { color: var(--gold); }
-.footer-col h4 {
-  color: var(--gold);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 1.2rem;
-}
-.footer-contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-.footer-contact-item a, .footer-services-list li {
-  color: #cdc2b6;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
+footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
+.footer-inner { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: var(--f-display); font-size: 1.7rem; font-weight: 700; letter-spacing: 0.04em; color: white; }
+.footer-brand-name span { color: var(--gold-light); }
+.footer-tagline { margin-top: 0.9rem; font-size: 1.08rem; line-height: 1.6; color: #B5A999; max-width: 340px; }
+.footer-col h4 { font-family: var(--f-sans); color: var(--gold-light); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1.3rem; }
+.footer-contact-item { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.9rem; }
+.footer-contact-item i { color: var(--gold-light); width: 16px; text-align: center; font-size: 0.85rem; }
+.footer-contact-item a, .footer-services-list li, .footer-services-list a { color: #cdc2b6; text-decoration: none; font-size: 1.02rem; transition: color 0.2s; overflow-wrap: anywhere; }
+.footer-contact-item a:hover, .footer-services-list a:hover { color: var(--gold-light); }
 .footer-services-list { list-style: none; }
-.footer-services-list li { padding: 0.5rem 0; }
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.footer-services-list li { padding: 0.32rem 0; }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-copy { font-family: var(--f-sans); font-size: 0.72rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.45); }
 
-.float-wa {
+/* SABİT DÜĞMELER */
+.float-wa, .float-phone {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 56px;
-  height: 56px;
-  background: #25D366;
+  right: 24px;
   color: white;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
+  display: flex; align-items: center; justify-content: center;
   text-decoration: none;
   z-index: 9999;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  transition: transform 0.25s var(--ease);
 }
-.float-phone {
-  position: fixed;
-  bottom: 100px;
-  right: 28px;
-  width: 52px;
-  height: 52px;
-  background: var(--gold);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  text-decoration: none;
-  z-index: 9999;
-  box-shadow: 0 6px 18px rgba(184,134,11,0.4);
-}
+.float-wa:hover, .float-phone:hover { transform: scale(1.07); }
+.float-wa { bottom: 24px; width: 54px; height: 54px; background: #25D366; font-size: 1.7rem; box-shadow: 0 8px 20px -6px rgba(37,211,102,0.6); }
+.float-phone { bottom: 90px; width: 54px; height: 54px; background: var(--gold); font-size: 1.15rem; box-shadow: 0 8px 20px -6px rgba(184,134,11,0.6); }
 
-/* MOBILE FIXES */
+/* GİRİŞ HAREKETİ */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* DUYARLI */
+@media (max-width: 1180px) {
+  :root { --gutter: 2rem; }
+  .header-phone { display: none; }
+  .main-nav { gap: 1.5rem; }
+  .hero-left { padding-right: 3rem; }
+  .about-grid { gap: 3.5rem; }
+}
 @media (max-width: 1024px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 120px 2rem 3rem; }
-  .hero-left::after { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+  .nav-toggle { display: flex; }
+  .main-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(255,251,245,0.98);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: 0 20px 30px -20px rgba(44,36,30,0.3);
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 0.5rem var(--gutter) 1rem;
+    display: none;
+  }
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 0.95rem 0; font-size: 0.82rem; border-bottom: 1px solid var(--rule-soft); }
+  .main-nav a:last-child { border-bottom: 0; }
+  .main-nav a::after { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-left { padding: calc(var(--header-h) + 3.5rem) var(--gutter) 3.5rem; }
+  .hero-right { height: 420px; }
+  .hero-right::after { inset: 1.2rem; }
+  .hero-quote-float { left: 2.4rem; bottom: 2.4rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .about-visual { position: relative; top: auto; max-width: 520px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .download-buttons-grid { grid-template-columns: repeat(2, 1fr); }
+  .premium-downloads { padding: 2.4rem 2rem; }
+  .premium-downloads::before { left: 2rem; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
+  .process-steps::before { display: none; }
   .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
 }
 @media (max-width: 768px) {
-  .header-inner { padding: 0 1.2rem; }
+  :root { --gutter: 1.25rem; --header-h: 68px; }
+  .logo-emblem { width: 38px; height: 38px; }
+  .logo-name { font-size: 1.12rem; }
+  .logo-sub { font-size: 0.5rem; letter-spacing: 0.2em; }
+  .header-inner { gap: 0.8rem; }
+  .header-contact { gap: 0.6rem; }
+  .btn-header { padding: 0.58rem 1.05rem; font-size: 0.66rem; letter-spacing: 0.12em; }
+  .about, .services, .books-section, .publishing-journey { padding: 4.5rem 0; }
+  .premium-downloads-wrap { margin-top: 4rem; }
+  .hero-left { padding-top: calc(var(--header-h) + 2.8rem); padding-bottom: 3rem; }
+  .hero-body { font-size: 1.12rem; margin-bottom: 2rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions a { width: 100%; }
+  .hero-facts { margin-top: 2.2rem; gap: 0.7rem 1.4rem; }
+  .hero-right { height: 320px; }
+  .hero-quote-float { left: 2rem; right: 2rem; bottom: 2rem; max-width: none; }
+  .hero-quote-float blockquote { font-size: 1.1rem; }
+  .about-visual { padding: 0 1.2rem 2rem 0; }
+  .about-stat-badge { right: 0; top: 1.4rem; padding: 0.9rem 1.1rem; }
+  .stat-number { font-size: 1.8rem; }
+  .about-text { font-size: 1.12rem; }
+  .regulation-block { padding: 1.4rem 1.3rem 0.6rem; font-size: 1.02rem; }
+  .about-values { grid-template-columns: 1fr; gap: 1.2rem; }
   .services-grid { grid-template-columns: 1fr; }
-  .hero-quote-float { display: none; }
-  .footer-top { grid-template-columns: 1fr; }
-  .period-grid { gap: 0.8rem; }
-  .period-btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
-  .time-block { min-width: 70px; padding: 0.6rem; }
-  .time-number { font-size: 1.8rem; }
+  .services-header { margin-bottom: 2.6rem; }
+  .books-head { flex-direction: column; align-items: stretch; gap: 1.6rem; }
+  .period-grid { display: flex; }
+  .period-btn { flex: 1; padding: 0.7rem 0.4rem; font-size: 0.62rem; letter-spacing: 0.02em; white-space: normal; line-height: 1.3; }
+  .period-title { padding: 1.3rem 1.3rem; }
+  .period-title h3 { font-size: 1.25rem; }
+  .period-title p { font-size: 0.62rem; }
+  .books-list { padding: 1.3rem; }
   .book-items { grid-template-columns: 1fr; }
-  .books-list { padding: 1rem; }
-  .period-title h3 { font-size: 1.2rem; }
-  .about-text { font-size: 1rem; }
-  .regulation-block { font-size: 0.9rem; padding: 1rem 1.2rem; }
+  .book-items.is-collapsed .book-card:nth-child(n+9) { display: none; }
+  .countdown-wrapper { padding: 1.6rem 1rem; }
+  .countdown-timer { gap: 0.5rem; flex-wrap: nowrap; }
+  .time-block { min-width: 0; flex: 1; padding: 0.8rem 0.3rem 0.7rem; }
+  .time-number { font-size: 1.7rem; }
+  .time-label { font-size: 0.56rem; letter-spacing: 0.1em; }
+  .period-status { font-size: 1.12rem; flex-direction: column; }
+  .journey-header { margin-bottom: 3rem; }
+  .cta-banner { padding: 4rem var(--gutter); }
+  .cta-content { padding: 3rem 1.4rem; }
+  .cta-buttons-group { flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr; gap: 2.4rem; }
+  footer { padding-bottom: 6rem; }
+  .float-wa { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .float-phone { right: 16px; bottom: 78px; width: 52px; height: 52px; }
+}
+@media (max-width: 640px) {
+  .download-buttons-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+  .download-buttons-grid.is-collapsed .btn-pdf:nth-of-type(n+7) { display: none; }
+  .premium-downloads { padding: 2.2rem 1.2rem 1.6rem; }
+  .premium-downloads::before { left: 1.2rem; }
+  .premium-downloads .list-toggle { display: flex; }
+  .process-steps { grid-template-columns: 1fr; gap: 2.4rem; }
+  .step-card { text-align: left; display: grid; grid-template-columns: 56px 1fr; column-gap: 1.2rem; padding: 0; }
+  .step-number { margin: 0; grid-row: 1 / span 2; }
+  .step-title { margin-top: 0.2rem; }
+}
+@media (max-width: 360px) {
+  .logo-sub { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-inner { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: 0.01ms !important; }
 }
 </style>
 </head>
 <body>
 
-<header>
+<header id="siteHeader">
   <div class="header-inner">
-    <a href="#" class="logo-wrap">
+    <a href="#" class="logo-wrap" aria-label="Platanuss Books ana sayfa">
       <div class="logo-emblem"><i class="fas fa-book-open"></i></div>
       <div class="logo-type">
         <span class="logo-name">PLATANUSS</span>
         <span class="logo-sub">Books & Publishing</span>
       </div>
     </a>
+    <nav class="main-nav" id="mainNav" aria-label="Ana menü">
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#belgeler">Belgeler</a>
+      <a href="#books">Yayın Arşivi</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#surec">Yayın Süreci</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
     <div class="header-contact">
-      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-header" target="_blank">Başvuru</a>
+      <a href="tel:05529266561" class="header-phone"><i class="fas fa-phone-alt"></i> 0552 926 65 61</a>
+      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-header" target="_blank" rel="noopener">Başvuru</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<a href="https://wa.me/905529266561?text=Merhaba" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<a href="tel:05529266561" class="float-phone"><i class="fas fa-phone-alt"></i></a>
+<a href="https://wa.me/905529266561?text=Merhaba" class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp ile yazın"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:05529266561" class="float-phone" aria-label="Telefonla arayın"><i class="fas fa-phone-alt"></i></a>
 
 <!-- HERO -->
 <section class="hero">
@@ -1152,11 +919,16 @@ footer {
     <p class="hero-body">Platanuss Books, özgün eserleri değerli yazarlarla buluşturan prestijli bir yayınevidir. Yayın sürecinin her aşamasında profesyonel destek sunuyoruz.</p>
     <div class="hero-actions">
       <a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> 0552 926 65 61</a>
-      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-wa-hero" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-wa-hero" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
+    <ul class="hero-facts">
+      <li><i class="fas fa-book"></i> 500+ yayınlanan eser</li>
+      <li><i class="fas fa-award"></i> Tanınmış uluslararası yayınevi</li>
+      <li><i class="fas fa-language"></i> Türkçe ve İngilizce yayın</li>
+    </ul>
   </div>
   <div class="hero-right">
-    <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Platanuss Books" class="hero-img">
+    <img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Kitaplarla dolu kütüphane rafları" class="hero-img" fetchpriority="high">
     <div class="hero-quote-float">
       <blockquote>Bir kitap, okuyucusuyla buluştuğu an anlam kazanır.</blockquote>
       <cite>— Platanuss Books</cite>
@@ -1168,24 +940,24 @@ footer {
 <div class="marquee-strip"><div class="marquee-inner"><span class="marquee-item">Editörlük <span class="marquee-dot"></span></span><span class="marquee-item">Dizgi & Mizanpaj <span class="marquee-dot"></span></span><span class="marquee-item">Kapak Tasarımı <span class="marquee-dot"></span></span><span class="marquee-item">Çeviri <span class="marquee-dot"></span></span><span class="marquee-item">Yayın Danışmanlığı <span class="marquee-dot"></span></span><span class="marquee-item">Dağıtım <span class="marquee-dot"></span></span><span class="marquee-item">ISBN & Bandrol</span></div></div>
 
 <!-- ABOUT with integrated article + PDF premium section -->
-<section class="about">
+<section class="about" id="hakkimizda">
   <div class="about-grid">
-    <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
+    <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main" alt="Kütüphane okuma salonu" loading="lazy"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent" alt="Kitap rafları" loading="lazy"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
     <div class="about-content">
       <div class="section-label">Hakkımızda</div>
-      <h2 class="section-heading">Platanus Publishing<em>®️</em><br>Uluslararası Prestij</h2>
-      <p class="about-text"><strong>Platanus Publishing®️</strong>, 2019 yılından beri uluslararası düzeyde düzenli faaliyet yürütmekte olup, tüm temel alanlarda Üniversiteler Arası Kurul ve Akademik Teşvik Yönetmeliği’ndeki <strong>“Tanınmış Uluslararası Yayınevi”</strong> tanımını karşılamaktadır.</p>
+      <h2 class="section-heading">Platanus Publishing<sup>®</sup><br>Uluslararası Prestij</h2>
+      <p class="about-text"><strong>Platanus Publishing®</strong>, 2019 yılından beri uluslararası düzeyde düzenli faaliyet yürütmekte olup, tüm temel alanlarda Üniversiteler Arası Kurul ve Akademik Teşvik Yönetmeliği’ndeki <strong>“Tanınmış Uluslararası Yayınevi”</strong> tanımını karşılamaktadır.</p>
       <div class="regulation-block">
         <p><i class="fas fa-gavel" style="color: var(--gold); margin-right: 0.5rem;"></i> <strong>Yükseköğretim Genel Kurulu Kararı (17/10/2019):</strong></p>
         <p><strong>Ulusal Yayınevi:</strong> En az dört yıl ulusal düzeyde düzenli faaliyet yürüten, yayınları Türkiye’deki üniversite kütüphanelerinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
         <p><strong>Uluslararası Yayınevi:</strong> En az dört yıl uluslararası düzeyde düzenli faaliyet yürüten, yayımladığı kitaplar YÖK’ün tanıdığı ilk 500 üniversite kütüphanesinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
-        <p>Platanus Publishing®️, Akademik Teşvik Yönetmeliği (27 Haziran 2018) gereği tüm temel alanlarda tanınmış uluslararası yayınevi niteliğine haizdir.</p>
+        <p>Platanus Publishing®, Akademik Teşvik Yönetmeliği (27 Haziran 2018) gereği tüm temel alanlarda tanınmış uluslararası yayınevi niteliğine haizdir.</p>
       </div>
       <div class="badge-list">
-        <span>✅ En az 5 yıl düzenli faaliyet</span>
-        <span>📚 Dünya ilk 500 üniv. katalog</span>
-        <span>🇹🇷 Türkiye üniv. kütüphane katalog</span>
-        <span>🌍 Farklı dillerde yayınlar</span>
+        <span><i class="fas fa-circle-check"></i> En az 5 yıl düzenli faaliyet</span>
+        <span><i class="fas fa-building-columns"></i> Dünya ilk 500 üniv. katalog</span>
+        <span><i class="fas fa-book-open"></i> Türkiye üniv. kütüphane katalog</span>
+        <span><i class="fas fa-earth-europe"></i> Farklı dillerde yayınlar</span>
       </div>
       <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için aşağıdaki dosyaları inceleyebilirsiniz.</p>
       
@@ -1199,10 +971,11 @@ footer {
   </div>
 
   <!-- PREMIUM PDF DOWNLOAD SECTION - FULL WIDTH (about-grid dışında) -->
-  <div class="premium-downloads-wrap">
+  <div class="premium-downloads-wrap" id="belgeler">
     <div class="premium-downloads">
-      <h4><i class="fas fa-file-pdf"></i> Akademik Belgeler & Özel Yayınlar</h4>
-      <div class="download-buttons-grid">
+      <h4><i class="fas fa-file-pdf"></i> Akademik Belgeler &amp; Özel Yayınlar</h4>
+      <p class="downloads-note">Uluslararası indeksler, ilk 500 üniversite katalog kanıtları ve detaylı ekler için PDF dosyalarına tıklayın.</p>
+      <div class="download-buttons-grid" id="belgeListesi">
         <!-- PDF-LISTE-BASLA -->
         <a href="https://www.platanusbooks.com/dosyalar/taninmis.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i><span class="btn-label">Tanınmış Yayınevi Belgesi PDF</span></a>
         <a href="https://www.platanusbooks.com/dosyalar/kriz.pdf" class="btn-pdf" target="_blank"><i class="fas fa-download"></i><span class="btn-label">Krizden Dayanıklılığa PDF</span></a>
@@ -1224,9 +997,7 @@ footer {
 
         
       </div>
-      <p style="font-size:0.8rem; margin-top:1rem; color:var(--muted);">
-        <i class="fas fa-check-circle"></i> Uluslararası indeksler, ilk 500 üniversite katalog kanıtları ve detaylı ekler için PDF dosyalarına tıklayın.
-      </p>
+      <button type="button" class="list-toggle" id="belgeToggle" data-target="belgeListesi" aria-expanded="false" data-more="Tüm belgeleri göster" data-less="Listeyi daralt"><span>Tüm belgeleri göster</span><i class="fas fa-chevron-down"></i></button>
     </div>
   </div>
 </section>
@@ -1234,32 +1005,34 @@ footer {
 <!-- KİTAP BÖLÜMÜ -->
 <section class="books-section" id="books">
   <div class="books-container">
-    <div class="section-label">📖 Yayın Arşivi</div>
-    <h2 class="section-heading">Kitap <em>Bölümü</em></h2>
-    <div class="period-grid" id="periodButtons">
-      <button class="period-btn active" data-period="2026Haziran">2026 HAZİRAN DÖNEMİ</button>
+    <div class="books-head">
+      <div><div class="section-label">Yayın Arşivi</div>
+      <h2 class="section-heading">Kitap <em>Bölümü</em></h2></div>
+    <div class="period-grid" id="periodButtons" role="group" aria-label="Yayın dönemi">
+      <button class="period-btn active" aria-pressed="true" data-period="2026Haziran">2026 HAZİRAN DÖNEMİ</button>
       <button class="period-btn" data-period="2026Mart">2026 MART DÖNEMİ</button>
       <button class="period-btn" data-period="2025Aralik">2025 ARALIK DÖNEMİ</button>
+    </div>
     </div>
     <div class="books-content" id="booksContent"></div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="services">
+<section class="services" id="hizmetler">
   <div class="services-header"><div class="section-label">Uzmanlık Alanlarımız</div><h2 class="section-heading">Prestijli Yayıncılık<br><em>Hizmetleri</em></h2></div>
   <div class="services-grid">
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-pen-fancy"></i></div><div class="premium-tag">Uzman Kadro</div><h3 class="service-title">Editörlük & Redaksiyon</h3><p class="service-excerpt">Dilbilgisi, imla, anlatım bütünlüğü ve akademik standartlara uygunluk için titiz çalışma.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Dil ve anlatım uzmanı editörler</li><li><i class="fas fa-check-circle"></i> Kaynakça & atıf düzenleme (APA, Chicago)</li><li><i class="fas fa-check-circle"></i> Kapsamlı redaksiyon raporu</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dizgi.webp" alt="Dizgi"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/kapak-tasarimi.webp" alt="Kapak"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/ceviri.webp" alt="Çeviri"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
-    <div class="service-card"><div class="service-img" style="background:url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover;"></div><div class="service-body"><div class="service-icon-large"><i class="fas fa-chart-line"></i></div><div class="premium-tag">360° Destek</div><h3 class="service-title">Yayın Danışmanlığı</h3><p class="service-excerpt">ISBN, bandrol, matbaa takibi, pazarlama stratejileri ve kitap fuarlarına katılım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Yasal süreçler ve telif hakları</li><li><i class="fas fa-check-circle"></i> Baskı takibi ve maliyet optimizasyonu</li><li><i class="fas fa-check-circle"></i> Tanıtım & basın bülteni desteği</li></ul></div></div>
-    <div class="service-card"><img class="service-img" src="https://www.platanusbooks.com/images/dagitim.webp" alt="Dağıtım"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""><div class="service-body"><div class="service-icon-large"><i class="fas fa-pen-fancy"></i></div><div class="premium-tag">Uzman Kadro</div><h3 class="service-title">Editörlük & Redaksiyon</h3><p class="service-excerpt">Dilbilgisi, imla, anlatım bütünlüğü ve akademik standartlara uygunluk için titiz çalışma.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Dil ve anlatım uzmanı editörler</li><li><i class="fas fa-check-circle"></i> Kaynakça & atıf düzenleme (APA, Chicago)</li><li><i class="fas fa-check-circle"></i> Kapsamlı redaksiyon raporu</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://www.platanusbooks.com/images/dizgi.webp" alt="Dizgi"><div class="service-body"><div class="service-icon-large"><i class="fas fa-paragraph"></i></div><div class="premium-tag">Tipografik Mükemmellik</div><h3 class="service-title">Dizgi & Mizanpaj</h3><p class="service-excerpt">Okuma konforunu zirveye taşıyan, akademik ve edebi eserlere özel tipografik tasarım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> İç tasarım ve bölüm şablonları</li><li><i class="fas fa-check-circle"></i> Tablo, grafik ve şekil düzenlemeleri</li><li><i class="fas fa-check-circle"></i> E-kitap (EPUB/MOBI) dönüştürme</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://www.platanusbooks.com/images/kapak-tasarimi.webp" alt="Kapak"><div class="service-body"><div class="service-icon-large"><i class="fas fa-palette"></i></div><div class="premium-tag">Özgün Sanat</div><h3 class="service-title">Kapak Tasarımı</h3><p class="service-excerpt">Eserin ruhunu yansıtan, raflarda öne çıkaran özel kapak konseptleri ve illüstrasyonlar.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> 3 farklı konsept sunumu</li><li><i class="fas fa-check-circle"></i> Ciltli & ciltsiz baskıya uygun</li><li><i class="fas fa-check-circle"></i> Yazar iş birliği ile son hal</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://www.platanusbooks.com/images/ceviri.webp" alt="Çeviri"><div class="service-body"><div class="service-icon-large"><i class="fas fa-language"></i></div><div class="premium-tag">Akademik Çeviri</div><h3 class="service-title">Çeviri Hizmeti</h3><p class="service-excerpt">Eserlerinizi İngilizce başta olmak üzere uluslararası dillere kazandırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Alanında uzman çevirmenler</li><li><i class="fas fa-check-circle"></i> Çift dilde yayın seçeneği</li><li><i class="fas fa-check-circle"></i> Yurt dışı indekslere uygunluk</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""><div class="service-body"><div class="service-icon-large"><i class="fas fa-chart-line"></i></div><div class="premium-tag">360° Destek</div><h3 class="service-title">Yayın Danışmanlığı</h3><p class="service-excerpt">ISBN, bandrol, matbaa takibi, pazarlama stratejileri ve kitap fuarlarına katılım.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Yasal süreçler ve telif hakları</li><li><i class="fas fa-check-circle"></i> Baskı takibi ve maliyet optimizasyonu</li><li><i class="fas fa-check-circle"></i> Tanıtım & basın bülteni desteği</li></ul></div></div>
+    <div class="service-card"><img class="service-img" loading="lazy" src="https://www.platanusbooks.com/images/dagitim.webp" alt="Dağıtım"><div class="service-body"><div class="service-icon-large"><i class="fas fa-truck-fast"></i></div><div class="premium-tag">Geniş Ağ</div><h3 class="service-title">Dağıtım Hizmeti</h3><p class="service-excerpt">Kitabınızı Türkiye genelindeki kitabevlerine ve dijital platformlara ulaştırıyoruz.</p><ul class="service-features"><li><i class="fas fa-check-circle"></i> Anlaşmalı dağıtım kanalları</li><li><i class="fas fa-check-circle"></i> D&R, İdefix, Amazon entegrasyonu</li><li><i class="fas fa-check-circle"></i> Stok yönetimi ve sipariş takibi</li></ul></div></div>
   </div>
 </section>
 
 <!-- YAYIN SÜRECİ -->
-<section class="publishing-journey">
+<section class="publishing-journey" id="surec">
   <div class="journey-container">
     <div class="journey-header"><div class="section-label" style="justify-content: center;">Süreç</div><h2 class="section-heading">Yayın <em>Yolculuğunuz</em></h2><p class="journey-sub">Elyazmanızdan okuyucunun eline geçene kadar her adımı titizlikle yönetiyoruz.</p></div>
     <div class="process-steps"><div class="step-card"><div class="step-number">I</div><h3 class="step-title">Başvuru & Değerlendirme</h3><p class="step-desc">Elyazmanız editör ekibimiz tarafından incelenir ve size geri bildirim verilir.</p></div><div class="step-card"><div class="step-number">II</div><h3 class="step-title">Sözleşme & Planlama</h3><p class="step-desc">Anlaşma koşulları netleştirilir, yayın takvimi oluşturulur.</p></div><div class="step-card"><div class="step-number">III</div><h3 class="step-title">Üretim Süreci</h3><p class="step-desc">Editörlük, dizgi, kapak tasarımı ve baskı aşamaları profesyonelce yürütülür.</p></div><div class="step-card"><div class="step-number">IV</div><h3 class="step-title">Dağıtım & Satış</h3><p class="step-desc">Eseriniz Türkiye geneli ve online kanallar aracılığıyla okuyucuyla buluşur.</p></div></div>
@@ -1267,10 +1040,10 @@ footer {
 </section>
 
 <!-- CTA -->
-<section class="cta-banner"><div class="cta-content"><h2 class="section-heading">Eseriniz<br><em>Okurlarla</em> Buluşsun</h2><p style="margin-bottom:1rem;">Dosyanızı gönderin, editör ekibimiz değerlendirsin.</p><a href="tel:05529266561" class="cta-phone">📞 0552 926 65 61</a><div class="cta-buttons-group"><a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> Hemen Arayın</a><a href="https://wa.me/905529266561" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div></section>
+<section class="cta-banner" id="iletisim"><div class="cta-content"><h2 class="section-heading">Eseriniz<br><em>Okurlarla</em> Buluşsun</h2><p class="cta-lead">Dosyanızı gönderin, editör ekibimiz değerlendirsin.</p><a href="tel:05529266561" class="cta-phone">0552 926 65 61</a><div class="cta-buttons-group"><a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> Hemen Arayın</a><a href="https://wa.me/905529266561" class="btn-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div></section>
 
 <!-- FOOTER -->
-<footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand-name">PLATANUSS <span>BOOKS</span></div><p style="margin-top:0.8rem; opacity:0.6;">Nitelikli yayıncılık anlayışıyla özgün eserler.</p></div><div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:05529266561">0552 926 65 61</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:platanusakademik@gmail.com">platanusakademik@gmail.com</a></div></div><div class="footer-col"><h4>Hizmetler</h4><ul class="footer-services-list"><li>Editörlük</li><li>Dizgi & Mizanpaj</li><li>Kapak Tasarımı</li><li>Çeviri</li><li>Yayın Danışmanlığı</li><li>Dağıtım</li></ul></div></div><div class="footer-bottom"><div class="footer-copy">© 2025 Platanuss Books — Tüm hakları saklıdır.</div></div></div></footer>
+<footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-brand-name">PLATANUSS <span>BOOKS</span></div><p class="footer-tagline">Nitelikli yayıncılık anlayışıyla özgün eserler.</p></div><div class="footer-col"><h4>İletişim</h4><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:05529266561">0552 926 65 61</a></div><div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/905529266561?text=Merhaba" target="_blank" rel="noopener">WhatsApp ile yazın</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:platanusakademik@gmail.com">platanusakademik@gmail.com</a></div></div><div class="footer-col"><h4>Hizmetler</h4><ul class="footer-services-list"><li><a href="#hizmetler">Editörlük</a></li><li><a href="#hizmetler">Dizgi & Mizanpaj</a></li><li><a href="#hizmetler">Kapak Tasarımı</a></li><li><a href="#hizmetler">Çeviri</a></li><li><a href="#hizmetler">Yayın Danışmanlığı</a></li><li><a href="#hizmetler">Dağıtım</a></li></ul></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 Platanuss Books — Tüm hakları saklıdır.</div></div></div></footer>
 
 <script>
 const booksData = {
@@ -1284,39 +1057,98 @@ const booksData = {
   }
 };
 const TARGET_DATE = new Date(2026, 4, 14, 0, 0, 0).getTime();
+const PERIOD_NAMES = { "2026Mart":"2026 MART DÖNEMİ", "2026Haziran":"2026 HAZİRAN DÖNEMİ", "2025Aralik":"2025 ARALIK DÖNEMİ" };
 let countdownInterval = null;
-function startCountdown() {
-  if (countdownInterval) clearInterval(countdownInterval);
-  countdownInterval = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = TARGET_DATE - now;
-    const daysElem = document.getElementById('days');
-    if (!daysElem) return;
-    if (distance < 0) {
-      document.getElementById('days').innerText = '00'; document.getElementById('hours').innerText = '00'; document.getElementById('minutes').innerText = '00'; document.getElementById('seconds').innerText = '00'; return;
-    }
-    document.getElementById('days').innerText = Math.floor(distance / (1000*60*60*24)).toString().padStart(2,'0');
-    document.getElementById('hours').innerText = Math.floor((distance % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2,'0');
-    document.getElementById('minutes').innerText = Math.floor((distance % (1000*60*60)) / (1000*60)).toString().padStart(2,'0');
-    document.getElementById('seconds').innerText = Math.floor((distance % (1000*60)) / 1000).toString().padStart(2,'0');
-  }, 1000);
+function stopCountdown() { if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; } }
+function tickCountdown() {
+  const daysElem = document.getElementById('days');
+  if (!daysElem) return;
+  const distance = TARGET_DATE - Date.now();
+  if (distance < 0) { stopCountdown(); renderBooks("2026Haziran"); return; }
+  const p = n => Math.floor(n).toString().padStart(2,'0');
+  daysElem.innerText = p(distance / 86400000);
+  document.getElementById('hours').innerText = p((distance % 86400000) / 3600000);
+  document.getElementById('minutes').innerText = p((distance % 3600000) / 60000);
+  document.getElementById('seconds').innerText = p((distance % 60000) / 1000);
+}
+function categoryHtml(icon, label, titles) {
+  const limit = window.matchMedia('(max-width: 768px)').matches ? 8 : 12;
+  const collapsible = titles.length > limit;
+  let h = `<div class="book-category"><div class="category-title"><i class="fas ${icon}"></i> ${label}<span class="count">${titles.length} kitap</span></div><div class="book-items${collapsible ? ' is-collapsed' : ''}">`;
+  titles.forEach(t => h += `<div class="book-card"><div class="book-title">${t}</div></div>`);
+  h += `</div>`;
+  if (collapsible) h += `<div class="toggle-row"><button type="button" class="list-toggle" aria-expanded="false" data-more="Tüm listeyi göster (${titles.length})" data-less="Listeyi daralt"><span>Tüm listeyi göster (${titles.length})</span><i class="fas fa-chevron-down"></i></button></div>`;
+  return h + `</div>`;
 }
 function renderBooks(periodKey) {
-  const names = { "2026Mart":"2026 MART DÖNEMİ", "2026Haziran":"2026 HAZİRAN DÖNEMİ", "2025Aralik":"2025 ARALIK DÖNEMİ" };
-  let titleHtml = `<div class="period-title"><h3>${names[periodKey].split(' ')[0]} <span>${names[periodKey].split(' ').slice(1).join(' ')}</span></h3><p>Yayımlanan kitaplar · Akademik Araştırma ve Derlemeler Serisi</p></div>`;
+  stopCountdown();
+  const name = PERIOD_NAMES[periodKey].split(' ');
+  const titleHtml = `<div class="period-title"><h3>${name[0]} <span>${name.slice(1).join(' ')}</span></h3><p>Akademik Araştırma ve Derlemeler Serisi</p></div>`;
+  const box = document.getElementById('booksContent');
   if (periodKey === "2026Haziran") {
-    let html = titleHtml + `<div class="books-list"><div class="countdown-wrapper"><div class="countdown-title"><i class="fas fa-hourglass-half"></i> 2026 Haziran Dönemi Eser Gönderimi İçin Kalan Süre</div><div class="countdown-timer"><div class="time-block"><div class="time-number" id="days">00</div><div class="time-label">Gün</div></div><div class="time-block"><div class="time-number" id="hours">00</div><div class="time-label">Saat</div></div><div class="time-block"><div class="time-number" id="minutes">00</div><div class="time-label">Dakika</div></div><div class="time-block"><div class="time-number" id="seconds">00</div><div class="time-label">Saniye</div></div></div></div><div class="empty-message"><i class="fas fa-feather-alt"></i><p>Bu döneme ait kitap listesi, eser gönderim süreci tamamlandıktan sonra yayınlanacaktır.</p></div></div>`;
-    document.getElementById('booksContent').innerHTML = html; startCountdown(); return;
+    const open = TARGET_DATE - Date.now() > 0;
+    const top = open
+      ? `<div class="countdown-wrapper"><div class="countdown-title"><i class="fas fa-hourglass-half"></i> 2026 Haziran Dönemi Eser Gönderimi İçin Kalan Süre</div><div class="countdown-timer"><div class="time-block"><div class="time-number" id="days">00</div><div class="time-label">Gün</div></div><div class="time-block"><div class="time-number" id="hours">00</div><div class="time-label">Saat</div></div><div class="time-block"><div class="time-number" id="minutes">00</div><div class="time-label">Dakika</div></div><div class="time-block"><div class="time-number" id="seconds">00</div><div class="time-label">Saniye</div></div></div></div>`
+      : `<div class="countdown-wrapper"><div class="period-status"><i class="fas fa-circle-check"></i> 2026 Haziran dönemi eser gönderim süresi tamamlandı.</div></div>`;
+    box.innerHTML = titleHtml + `<div class="books-list">${top}<div class="empty-message"><i class="fas fa-feather-alt"></i><p>Bu döneme ait kitap listesi, eser gönderim süreci tamamlandıktan sonra yayınlanacaktır.</p></div></div>`;
+    if (open) { tickCountdown(); countdownInterval = setInterval(tickCountdown, 1000); }
+    return;
   }
   const data = booksData[periodKey];
   let booksHtml = '<div class="books-list">';
-  if (data.turkce && data.turkce.length) { booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-language"></i> TÜRKÇE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`; data.turkce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`); booksHtml += `</div></div>`; }
-  if (data.ingilizce && data.ingilizce.length) { booksHtml += `<div class="book-category"><div class="category-title"><i class="fas fa-globe"></i> İNGİLİZCE YAYIMLANAN KİTAP LİSTESİ</div><div class="book-items">`; data.ingilizce.forEach(title => booksHtml += `<div class="book-card"><div class="book-title">${title}</div></div>`); booksHtml += `</div></div>`; }
-  booksHtml += '</div>'; document.getElementById('booksContent').innerHTML = titleHtml + booksHtml;
-  if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+  if (data.turkce && data.turkce.length) booksHtml += categoryHtml('fa-language', 'TÜRKÇE YAYIMLANAN KİTAPLAR', data.turkce);
+  if (data.ingilizce && data.ingilizce.length) booksHtml += categoryHtml('fa-globe', 'İNGİLİZCE YAYIMLANAN KİTAPLAR', data.ingilizce);
+  box.innerHTML = titleHtml + booksHtml + '</div>';
 }
-document.querySelectorAll('.period-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderBooks(btn.getAttribute('data-period')); }); });
+document.querySelectorAll('.period-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.period-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); }); btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); renderBooks(btn.getAttribute('data-period')); }); });
 renderBooks("2026Haziran");
+
+/* Aç/kapa düğmeleri (kitap listesi + belgeler) */
+document.addEventListener('click', e => {
+  const t = e.target.closest('.list-toggle');
+  if (!t) return;
+  const list = t.dataset.target ? document.getElementById(t.dataset.target) : t.closest('.book-category').querySelector('.book-items');
+  const collapsed = list.classList.toggle('is-collapsed');
+  t.setAttribute('aria-expanded', String(!collapsed));
+  t.querySelector('span').textContent = collapsed ? t.dataset.more : t.dataset.less;
+});
+(function () {
+  const grid = document.getElementById('belgeListesi'), btn = document.getElementById('belgeToggle');
+  if (!grid || !btn) return;
+  const n = grid.querySelectorAll('.btn-pdf').length;
+  if (n <= 6) { btn.remove(); return; }
+  btn.dataset.more = `Tüm belgeleri göster (${n})`;
+  btn.querySelector('span').textContent = btn.dataset.more;
+  grid.classList.add('is-collapsed');
+})();
+
+/* Menü */
+(function () {
+  const header = document.getElementById('siteHeader'), nav = document.getElementById('mainNav'), tog = document.getElementById('navToggle');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  const close = () => { nav.classList.remove('open'); tog.setAttribute('aria-expanded', 'false'); };
+  tog.addEventListener('click', () => { const o = nav.classList.toggle('open'); tog.setAttribute('aria-expanded', String(o)); });
+  nav.addEventListener('click', e => { if (e.target.closest('a')) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  const links = [...nav.querySelectorAll('a')];
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + en.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+  }
+})();
+
+/* Kayan şerit: kesintisiz döngü için içeriği ikile */
+(function () { const m = document.querySelector('.marquee-inner'); if (m) m.innerHTML += m.innerHTML; })();
+
+/* Yumuşak giriş */
+(function () {
+  const els = document.querySelectorAll('.about-visual, .about-content, .premium-downloads, .books-container, .services-header, .service-card, .journey-header, .step-card, .cta-content');
+  if (!('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js');
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+})();
 </script>
 </body>
 </html>
