@@ -877,6 +877,107 @@ footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   * { transition-duration: 0.01ms !important; }
 }
+
+/* HERO DÜĞMELERİ */
+.hero-actions { gap: 0.75rem; }
+.hero-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  padding: 0.45rem 1.25rem 0.45rem 0.45rem;
+  border-radius: 60px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.hero-btn-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem;
+  transition: transform 0.4s var(--ease);
+}
+.hero-btn-text { display: flex; flex-direction: column; gap: 0.2rem; line-height: 1.1; flex: 1; text-align: left; }
+.hero-btn-text small { font-family: var(--f-sans); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+.hero-btn-text strong { font-family: var(--f-sans); font-size: 0.94rem; font-weight: 700; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hero-btn-arrow { font-size: 0.72rem; opacity: 0.55; transform: translateX(-4px); transition: transform 0.3s var(--ease), opacity 0.3s; }
+.hero-btn:hover { transform: translateY(-3px); }
+.hero-btn:hover .hero-btn-arrow { transform: translateX(2px); opacity: 1; }
+.hero-btn:hover .hero-btn-icon { transform: rotate(-8deg) scale(1.06); }
+.hero-btn::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.38), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.hero-btn:hover::after { animation: btnShine 0.9s var(--ease); }
+@keyframes btnShine { to { left: 130%; } }
+
+.hero-btn-call {
+  background: linear-gradient(135deg, #C9971A 0%, var(--gold) 45%, var(--gold-dark) 100%);
+  color: white;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 14px 26px -14px rgba(155,106,10,0.85);
+}
+.hero-btn-call .hero-btn-icon { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.4); color: white; }
+.hero-btn-call small { color: #FBEBC8; }
+.hero-btn-call:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 20px 32px -14px rgba(155,106,10,0.9); }
+
+.hero-btn-wa {
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
+  border-color: var(--rule);
+  box-shadow: 0 14px 26px -18px rgba(44,36,30,0.5);
+}
+.hero-btn-wa .hero-btn-icon { background: #25D366; color: white; font-size: 1.4rem; box-shadow: 0 6px 14px -6px rgba(37,211,102,0.8); }
+.hero-btn-wa small { color: var(--gold-dark); }
+.hero-btn-wa .hero-btn-arrow { color: var(--gold-dark); }
+.hero-btn-wa:hover { border-color: var(--gold); box-shadow: 0 20px 32px -18px rgba(44,36,30,0.55); }
+
+/* HERO GİRİŞ HAREKETİ */
+.hero-title .ln { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.hero-title .ln > span { display: block; animation: lineUp 1s cubic-bezier(0.2, 0.75, 0.2, 1) both; }
+.hero-title .ln:nth-child(1) > span { animation-delay: 0.25s; }
+.hero-title .ln:nth-child(2) > span { animation-delay: 0.42s; }
+@keyframes lineUp { from { transform: translateY(112%) rotate(2.5deg); } to { transform: none; } }
+.hero-title em {
+  background: linear-gradient(100deg, var(--gold) 0%, var(--gold) 40%, #F2CF74 50%, var(--gold) 60%, var(--gold) 100%);
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--gold);
+  padding-right: 0.06em;
+  animation: goldSweep 1.6s ease-out 1.25s both;
+}
+@keyframes goldSweep { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.hero-eyebrow { animation: fadeUp 0.8s var(--ease) 0.1s both; }
+.hero-eyebrow::before { transform-origin: left; animation: growX 0.8s var(--ease) 0.1s both; }
+.hero-title-sub { animation: fadeUp 0.9s var(--ease) 0.75s both; }
+.hero-rule { transform-origin: left; animation: growX 0.9s var(--ease) 0.95s both; }
+.hero-body { animation: fadeUp 0.9s var(--ease) 1.05s both; }
+.hero-actions { animation: fadeUp 0.9s var(--ease) 1.2s both; }
+.hero-facts { animation: fadeUp 0.9s var(--ease) 1.35s both; }
+.hero-img { animation: heroZoom 14s ease-out both; }
+.hero-quote-float { animation: fadeUp 1s var(--ease) 1.1s both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes growX { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes heroZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+
+/* BELGELER ÜSTTE */
+.about { padding-top: 5.5rem; }
+.premium-downloads-wrap { margin: 0 auto 6.5rem; }
+@media (max-width: 768px) {
+  .about { padding-top: 3.5rem; }
+  .premium-downloads-wrap { margin: 0 auto 4.5rem; }
+  .hero-btn { width: 100%; min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .ln > span, .hero-title em, .hero-eyebrow, .hero-eyebrow::before, .hero-title-sub, .hero-rule, .hero-body, .hero-actions, .hero-facts, .hero-img, .hero-quote-float { animation: none; }
+  .hero-title em { background-position: 0 0; }
+}
 </style>
 </head>
 <body>
@@ -891,8 +992,8 @@ footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
       </div>
     </a>
     <nav class="main-nav" id="mainNav" aria-label="Ana menü">
-      <a href="#hakkimizda">Hakkımızda</a>
       <a href="#belgeler">Belgeler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
       <a href="#books">Yayın Arşivi</a>
       <a href="#hizmetler">Hizmetler</a>
       <a href="#surec">Yayın Süreci</a>
@@ -913,13 +1014,13 @@ footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Yayıncılıkta 10+ Yıl</div>
-    <h1 class="hero-title">Edebiyatın<br>ve <em>Bilginin</em></h1>
+    <h1 class="hero-title"><span class="ln"><span>Edebiyatın</span></span><span class="ln"><span>ve <em>Bilginin</em></span></span></h1>
     <div class="hero-title-sub">Buluşma Noktası</div>
     <div class="hero-rule"></div>
     <p class="hero-body">Platanuss Books, özgün eserleri değerli yazarlarla buluşturan prestijli bir yayınevidir. Yayın sürecinin her aşamasında profesyonel destek sunuyoruz.</p>
     <div class="hero-actions">
-      <a href="tel:05529266561" class="btn-primary"><i class="fas fa-phone-alt"></i> 0552 926 65 61</a>
-      <a href="https://wa.me/905529266561?text=Merhaba" class="btn-wa-hero" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="tel:05529266561" class="hero-btn hero-btn-call"><span class="hero-btn-icon"><i class="fas fa-phone-alt"></i></span><span class="hero-btn-text"><small>Hemen arayın</small><strong>0552 926 65 61</strong></span><i class="fas fa-arrow-right hero-btn-arrow"></i></a>
+      <a href="https://wa.me/905529266561?text=Merhaba" class="hero-btn hero-btn-wa" target="_blank" rel="noopener"><span class="hero-btn-icon"><i class="fab fa-whatsapp"></i></span><span class="hero-btn-text"><small>WhatsApp</small><strong>Mesaj gönderin</strong></span><i class="fas fa-arrow-right hero-btn-arrow"></i></a>
     </div>
     <ul class="hero-facts">
       <li><i class="fas fa-book"></i> 500+ yayınlanan eser</li>
@@ -940,36 +1041,7 @@ footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
 <div class="marquee-strip"><div class="marquee-inner"><span class="marquee-item">Editörlük <span class="marquee-dot"></span></span><span class="marquee-item">Dizgi & Mizanpaj <span class="marquee-dot"></span></span><span class="marquee-item">Kapak Tasarımı <span class="marquee-dot"></span></span><span class="marquee-item">Çeviri <span class="marquee-dot"></span></span><span class="marquee-item">Yayın Danışmanlığı <span class="marquee-dot"></span></span><span class="marquee-item">Dağıtım <span class="marquee-dot"></span></span><span class="marquee-item">ISBN & Bandrol</span></div></div>
 
 <!-- ABOUT with integrated article + PDF premium section -->
-<section class="about" id="hakkimizda">
-  <div class="about-grid">
-    <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main" alt="Kütüphane okuma salonu" loading="lazy"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent" alt="Kitap rafları" loading="lazy"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
-    <div class="about-content">
-      <div class="section-label">Hakkımızda</div>
-      <h2 class="section-heading">Platanus Publishing<sup>®</sup><br>Uluslararası Prestij</h2>
-      <p class="about-text"><strong>Platanus Publishing®</strong>, 2019 yılından beri uluslararası düzeyde düzenli faaliyet yürütmekte olup, tüm temel alanlarda Üniversiteler Arası Kurul ve Akademik Teşvik Yönetmeliği’ndeki <strong>“Tanınmış Uluslararası Yayınevi”</strong> tanımını karşılamaktadır.</p>
-      <div class="regulation-block">
-        <p><i class="fas fa-gavel" style="color: var(--gold); margin-right: 0.5rem;"></i> <strong>Yükseköğretim Genel Kurulu Kararı (17/10/2019):</strong></p>
-        <p><strong>Ulusal Yayınevi:</strong> En az dört yıl ulusal düzeyde düzenli faaliyet yürüten, yayınları Türkiye’deki üniversite kütüphanelerinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
-        <p><strong>Uluslararası Yayınevi:</strong> En az dört yıl uluslararası düzeyde düzenli faaliyet yürüten, yayımladığı kitaplar YÖK’ün tanıdığı ilk 500 üniversite kütüphanesinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
-        <p>Platanus Publishing®, Akademik Teşvik Yönetmeliği (27 Haziran 2018) gereği tüm temel alanlarda tanınmış uluslararası yayınevi niteliğine haizdir.</p>
-      </div>
-      <div class="badge-list">
-        <span><i class="fas fa-circle-check"></i> En az 5 yıl düzenli faaliyet</span>
-        <span><i class="fas fa-building-columns"></i> Dünya ilk 500 üniv. katalog</span>
-        <span><i class="fas fa-book-open"></i> Türkiye üniv. kütüphane katalog</span>
-        <span><i class="fas fa-earth-europe"></i> Farklı dillerde yayınlar</span>
-      </div>
-      <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için aşağıdaki dosyaları inceleyebilirsiniz.</p>
-      
-      <div class="about-values">
-        <div class="value-item"><div class="value-icon"><i class="fas fa-feather"></i></div><div class="value-text"><h5>Özgünlük</h5><p>Yazarın sesini koruyarak işliyoruz.</p></div></div>
-        <div class="value-item"><div class="value-icon"><i class="fas fa-gem"></i></div><div class="value-text"><h5>Kalite</h5><p>Uluslararası standartlarda üretim.</p></div></div>
-        <div class="value-item"><div class="value-icon"><i class="fas fa-handshake"></i></div><div class="value-text"><h5>Güven</h5><p>Şeffaf süreç, net sözleşme.</p></div></div>
-        <div class="value-item"><div class="value-icon"><i class="fas fa-globe"></i></div><div class="value-text"><h5>Erişim</h5><p>Türkiye geneli dağıtım ağı.</p></div></div>
-      </div>
-    </div>
-  </div>
-
+<section class="about">
   <!-- PREMIUM PDF DOWNLOAD SECTION - FULL WIDTH (about-grid dışında) -->
   <div class="premium-downloads-wrap" id="belgeler">
     <div class="premium-downloads">
@@ -1000,6 +1072,35 @@ footer { background: #1E1915; padding: 4.5rem 0 2rem; color: #e2dbd1; }
       <button type="button" class="list-toggle" id="belgeToggle" data-target="belgeListesi" aria-expanded="false" data-more="Tüm belgeleri göster" data-less="Listeyi daralt"><span>Tüm belgeleri göster</span><i class="fas fa-chevron-down"></i></button>
     </div>
   </div>
+  <div class="about-grid" id="hakkimizda">
+    <div class="about-visual"><img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800" class="about-img-main" alt="Kütüphane okuma salonu" loading="lazy"><img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600" class="about-img-accent" alt="Kitap rafları" loading="lazy"><div class="about-stat-badge"><span class="stat-number">500+</span><span class="stat-label">Yayınlanan Eser</span></div></div>
+    <div class="about-content">
+      <div class="section-label">Hakkımızda</div>
+      <h2 class="section-heading">Platanus Publishing<sup>®</sup><br>Uluslararası Prestij</h2>
+      <p class="about-text"><strong>Platanus Publishing®</strong>, 2019 yılından beri uluslararası düzeyde düzenli faaliyet yürütmekte olup, tüm temel alanlarda Üniversiteler Arası Kurul ve Akademik Teşvik Yönetmeliği’ndeki <strong>“Tanınmış Uluslararası Yayınevi”</strong> tanımını karşılamaktadır.</p>
+      <div class="regulation-block">
+        <p><i class="fas fa-gavel" style="color: var(--gold); margin-right: 0.5rem;"></i> <strong>Yükseköğretim Genel Kurulu Kararı (17/10/2019):</strong></p>
+        <p><strong>Ulusal Yayınevi:</strong> En az dört yıl ulusal düzeyde düzenli faaliyet yürüten, yayınları Türkiye’deki üniversite kütüphanelerinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
+        <p><strong>Uluslararası Yayınevi:</strong> En az dört yıl uluslararası düzeyde düzenli faaliyet yürüten, yayımladığı kitaplar YÖK’ün tanıdığı ilk 500 üniversite kütüphanesinde kataloglanan ve aynı alanda farklı yazarlara ait en az 20 kitap yayımlamış yayınevi.</p>
+        <p>Platanus Publishing®, Akademik Teşvik Yönetmeliği (27 Haziran 2018) gereği tüm temel alanlarda tanınmış uluslararası yayınevi niteliğine haizdir.</p>
+      </div>
+      <div class="badge-list">
+        <span><i class="fas fa-circle-check"></i> En az 5 yıl düzenli faaliyet</span>
+        <span><i class="fas fa-building-columns"></i> Dünya ilk 500 üniv. katalog</span>
+        <span><i class="fas fa-book-open"></i> Türkiye üniv. kütüphane katalog</span>
+        <span><i class="fas fa-earth-europe"></i> Farklı dillerde yayınlar</span>
+      </div>
+      <p class="about-text">Yayınevimiz, doçentlik ve akademik teşvik kriterlerini eksiksiz karşılayan belgeleriyle bilimsel üretime katkı sunar. Resmî belgeler ve ekleri için yukarıdaki dosyaları inceleyebilirsiniz.</p>
+      
+      <div class="about-values">
+        <div class="value-item"><div class="value-icon"><i class="fas fa-feather"></i></div><div class="value-text"><h5>Özgünlük</h5><p>Yazarın sesini koruyarak işliyoruz.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-gem"></i></div><div class="value-text"><h5>Kalite</h5><p>Uluslararası standartlarda üretim.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-handshake"></i></div><div class="value-text"><h5>Güven</h5><p>Şeffaf süreç, net sözleşme.</p></div></div>
+        <div class="value-item"><div class="value-icon"><i class="fas fa-globe"></i></div><div class="value-text"><h5>Erişim</h5><p>Türkiye geneli dağıtım ağı.</p></div></div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- KİTAP BÖLÜMÜ -->
